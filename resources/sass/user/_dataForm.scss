@@ -1,0 +1,97 @@
+.data-form-wrapper{
+    width: calc(60% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,.8);
+    height: 68vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .data-formInput,.data-formNumberInput{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 10px;
+        font-family: "Bebas Neue",sans-serif;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 8px;
+    }
+    .data-formInput{
+        width: calc(70% - 20px);
+        text-indent: 0.4em;
+        font-size: 1.4em;
+    }
+    .data-formNumberInput{
+        width: calc(30% - 20px);
+        font-size: 1.3em;
+        text-indent: 0.5em;
+        margin: 8px auto;
+    }
+    .data-formFileInput{
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    .pick-up-a-photo{
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.4em;
+        font-family: "Bebas Neue",sans-serif;
+        background: rgba(223,71,35,.4);
+        cursor: pointer;
+    }
+    .sex-section,.pierogi-section{
+        width: calc(80% - 20px);
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: "Bebas Neue",sans-serif;
+        margin-bottom: 5vh;
+        .sex-section-header,.pierogi-section-header{
+            width: calc(90% - 5px);
+            padding: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 1vh;
+        }
+        .sex-label{
+            font-size: 1.3em;
+            margin-right: 0.2em;
+        }
+        #woman-checkbox{
+            margin-right: 1.2em;
+        }
+        .pierogi-buttons{
+            margin-bottom: 10px;
+            .pierogi-classic-btn{
+                width: calc(30% - 20px);
+                padding: 10px;
+                display: inline-block;
+                margin: 5px;
+                border-radius: 10px;
+                background: rgba(223,71,35,.4);
+                font-size: 1.2em;
+                transition: filter 0.4s;
+            }
+            .pierogi-classic-btn:hover{
+                filter: brightness(20%);
+            }
+            .chosen{
+                filter: brightness(20%);
+            }
+        }
+        .pierogiStandard{
+            display: none;
+        }
+    }
+}

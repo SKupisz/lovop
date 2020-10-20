@@ -1,0 +1,24 @@
+.expiration-wrapper{
+    width: calc(95% - 10px);
+    padding: 0px 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    .expiration-header{
+        width: calc(90% - 20px);
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 40px;
+        font-size: 2.9em;
+        font-family: "Bebas Neue",sans-serif;
+        letter-spacing: 0.05em;
+        background: $rouge-background;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}

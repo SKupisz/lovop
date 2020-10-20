@@ -1,0 +1,93 @@
+@keyframes slidingInto {
+    100%{
+        opacity: 1;
+    }
+}
+body{
+    background: url("./public/img/backgrounds/background2.jpg");
+    /*image from https://freeimages.com */
+}
+
+
+.about-us-wrapper{
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    .main-header{
+        width: calc(90% - 20px);
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 2.9em;
+        font-family: "Bebas Neue",sans-serif;
+        letter-spacing: 0.04em;
+        background: $rouge-background;
+    }
+    .main-describe,.second-describe{
+        width: calc(90% - 20px);
+        opacity: 0;
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-indent: 1em;
+        font-size: 1.9em;
+        font-family: "Oswald",sans-serif;
+        background: $rouge-background;
+        transition: all 1.4s;
+        animation-name: slidingInto;
+        animation-duration: 2s;
+        animation-delay: 1s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    .second-describe{
+        animation-delay: 2s;
+        .people-scratched-off{
+            text-decoration: line-through;
+            padding: 0;
+        }
+        .quote{
+            margin-top: 30px;
+        }
+    }
+}
+@media screen and (max-width: 862px){
+    .about-us-wrapper{
+        .main-header,.main-describe,.second-describe{
+            width: calc(100% - 20px);
+        }
+        .main-describe,.second-describe{
+            font-size: 1.4em;
+        }
+    }
+}
+@media screen and (max-width: 534px){
+    .about-us-wrapper{
+        .main-header{
+            font-size: 2.4em;
+        }
+    }
+}
+@media screen and (max-width: 428px){
+    .about-us-wrapper{
+        .main-describe,.second-describe{
+            font-size: 1.2em;
+        }
+        .second-describe{
+            .quote{
+                margin-top: 15px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 366px){
+    .about-us-wrapper{
+        .main-header{
+            font-size: 1.9em;
+        }
+    }
+}

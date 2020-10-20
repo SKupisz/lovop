@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden !important;
+}
+a{
+    text-decoration: none !important;
+}
+.main-navbar{
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    .main-nav{
+        padding: 20px 0px;
+        background: linear-gradient(90deg,rgba(255,101,91,1) 0%,rgba(253,41,123,0.9783263647255778) 35%, rgba(9,9,121,1) 70%),
+        linear-gradient(45deg,rgba(255,101,91,1) 0%,rgba(0,3,80,1) 60%);
+        .main-nav-elems,.dropdown-elem > .dropdown-toggle{
+            color: black;
+            display: inline-block;
+            padding: 5px 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            margin: 0px 10px;
+            height: 2em;
+            font-size: 1.9em;
+            font-family: "Bebas Neue",sans-serif;
+            background: rgba(255,255,255,.2);
+            transition: background 0.4s;
+            cursor: pointer;
+        }
+        .main-logo{
+            text-decoration: none;
+            color: black;
+            font-size: 1.9em;
+            font-family: "Bebas Neue",sans-serif;
+            width: calc(20% - 10px);
+            padding: 5px;
+            border: 1px solid black;
+            border-radius: 10px;
+            text-align: center;
+            letter-spacing: 0.08em;
+            font-style: italic;
+            height: 2em;
+            .logo-text{
+                display: block;
+                transform: rotate(-3deg);
+            }
+        }
+        .main-nav-elems:hover{
+            background: rgba(255,255,255,.9);
+        }
+        .edit-elem,.logout-elem,.dropdown-elem{
+            float: right;
+        }
+        .dropdown-elem{
+            border: none;
+            background: none;
+            cursor: auto;
+            .dropdown-toggle:hover{
+                background: rgba(255,101,91,0.8);
+            }
+            .dropdown-menu{
+                background: linear-gradient(0deg, rgba(253,41,123,1) 0%,rgba(9,9,121,1) 68%);
+                border: none;
+                font-family: "Bebas Neue",sans-serif;
+                font-size: 1.1em;
+                text-align: center;
+                width: 90% !important;
+                .dropdown-item{
+                    color: white;
+                    transition: background 0.3s;
+                }
+                .dropdown-item:hover{
+                    background: rgba(1,1,1,.4);
+                }
+            }
+        }
+    }
+}

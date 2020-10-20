@@ -1,0 +1,87 @@
+.register-form-wrapper{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    background: url("./public/img/backgrounds/background2.jpg");
+    background-size: cover;
+}
+.register-form-header{
+    width: calc(90% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 2.4em;
+    font-family: "Bebas Neue",sans-serif;
+    margin-bottom: 20px;
+}
+.register-input{
+    width: calc(60% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.4em;
+    font-family: "Bebas Neue",sans-serif;
+    text-indent: 0.5em;
+    border: none;
+    border-radius: 10px;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,.8);
+}
+.register-input:focus{
+    outline-style: none;
+}
+.register-button{
+    padding: 10px 20px;
+    font-size: 1.4em;
+    border: none;
+    border-radius: 10px;
+    font-family: "Bebas Neue",sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    transition: background 0.4s;
+    background: rgb(253,41,123);
+    margin-top: 90px;
+}
+.register-button:hover{
+    background: rgba(255,255,255,.2);
+}
+.error-container{
+    width: calc(50% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 10px;
+    background: $rouge-background;
+    .error{
+        font-size: 2.1em;
+        font-family: "Bebas Neue",sans-serif;
+        color: rgb(253,41,123);
+    }
+}
+.registration-success-wrapper{
+    width: 100%;
+    align-items: center;
+    background: linear-gradient(90deg, transparent 0%,  rgba(223,71,35,.6) 50%,transparent 100%);
+    .registration-success{
+        width: calc(80% - 20px);
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 1.9em;
+        font-family: "Bebas Neue",sans-serif;
+        letter-spacing: 0.05em;
+    }
+}

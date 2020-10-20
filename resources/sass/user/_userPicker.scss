@@ -1,0 +1,132 @@
+@keyframes blinking{
+    33%{
+        opacity: 0;
+    }
+    66%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.user-picker-container{
+    width: calc(70% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80vh;
+    margin-top: 5px;
+    border-radius: 10px;
+    .loading-div{
+        width: calc(40% - 20px);
+        background: rgba(255,255,255,.4);
+        border-radius: 10px;
+        padding: 10px;
+        font-size: 1.9em;
+        font-family: "Bebas Neue",sans-serif;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        .loading-div-dots{
+            opacity: 1;
+            animation-name: blinking;
+            animation-iteration-count: infinite;
+            animation-duration: 1.2s;
+        }
+        .dot-2{
+            animation-delay: 0.4s;
+        }
+        .dot-3{
+            animation-delay: 0.8s;
+        }
+    }
+    .photo-section,.info-section{
+        display: inline-block;
+        height: 100%;
+        vertical-align: top;
+    }
+    .photo-section{
+        width: 60%;
+        border-radius: 10px 0px 0px 10px;
+        background-size: cover !important;
+        background-position: center;
+        .decision-panel{
+            width: calc(90% - 20px);
+            padding: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            margin-top: 70%;
+            .panel-btn{
+                width: 50px;
+                height: 50px;
+                margin: 0px 10px;
+                border-radius: 50%;
+                cursor: pointer;
+                transition: all 0.4s;
+                background: rgba(255,255,255,.4);
+            }
+            .panel-btn:hover{
+                transform: rotate(180deg);
+            }
+            .panel-btn:focus{
+                outline: none;
+            }
+        }
+    }
+    .info-section{
+        width: 40%;
+        background: rgba(255,255,255,.8);
+        font-family: "Bebas Neue",sans-serif;
+        text-align: center;
+        border-radius: 0px 10px 10px 0px;
+        .name-and-age{
+            width: calc(95% - 10px);
+            padding: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 2.7em;
+            margin-bottom: 7vh;
+        }
+        .pierogi-section{
+            width: calc(100% - 20px);
+            padding: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            .fav-pierogi-elem{
+                width: calc(50% - 20px);
+                padding: 5px 10px;
+                border-radius: 1.2em;
+                font-size: 1.4em;
+                background: $pierogi-background;
+                display: inline-block;
+                margin: 5px;
+                border: 1px solid black;
+            }
+            .wider-elem{
+                width: calc(80% - 20px);
+            }
+            .error-elem{
+                width: calc(100% - 20px);
+                font-size: 1.4em;
+            }
+            .fav-pierogi-extended{
+                width: calc(90% - 20px);
+                padding: 10px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                font-size: 1.3em;
+                font-family: "Bebas Neue",sans-serif;
+                border-bottom: 1px solid black;
+                margin-top: 2vh;
+            }
+        }
+    }
+}
