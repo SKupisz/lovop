@@ -129,4 +129,52 @@
             }
         }
     }
+    .matched-couple{
+        width: 100%;
+        height: 100%;
+        display: none;
+        background: $rouge-background;
+        text-align: center;
+        .matched-couple-header{
+            width: calc(90% - 20px);
+            padding: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 2.9em;
+            font-family: "Bebas Neue",sans-serif;
+        }
+        .matched-info{
+            width: calc(80% - 20px);
+            padding: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.8em;
+            letter-spacing: 0.04em;
+            margin-bottom: 20vh;
+        }
+        .buttons-container{
+            width: calc(90% - 10px);
+            padding: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            .matched-section-btn{
+                padding: 10px 20px;
+                margin: 0px 5px;
+                border-radius: 10px;
+                border: none;
+                background: rgba(255,255,255,.4);
+                font-size: 1.4em;
+                font-family: "Bebas Neue",sans-serif;
+                cursor: pointer;
+                transition: filter 0.4s;
+            }
+            .matched-section-btn:hover{
+                filter: brightness(70%);
+            }
+        }
+    }
 }

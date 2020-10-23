@@ -12,10 +12,22 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(session()->get("signed_in")){
+        return redirect("user");
+    }
+    else{
+        return view('welcome');
+    }
+    
 });
 Route::get("/register",function(){
-    return view("register");
+    if(session()->get("signed_in")){
+        return redirect("user");
+    }
+    else{
+        return view("register");
+    }
+    
 });
 Route::get("/about",function(){
     return view("about");
@@ -24,11 +36,14 @@ Route::get("/signin","SignInOutController@checkIfNotSignedIn");
 Route::get("/confirmAccount","SignInOutController@authorizeNewUser");
 Route::get("/user","UserActivities@mainLoop");
 Route::get("/user/edit","UserActivities@editPanel");
+Route::get("/user/chat/{emailWithChatting}","LoversChat@goChatting");
+Route::get("/user/matches","UserActivities@belovedOnes");
 Route::get("/logout","UserActivities@logout");
 Route::post("/register","SignInOutController@registerNewUser");
 Route::post("/signin","SignInOutController@SignInUser");
 Route::post("/updateData","UserActivities@fillTheData");
 
+Route::post("/user/loveIsInTheAir","UserActivities@makeAMatch");
 Route::get("/user/support/randSomeNewLover","findSomebodyToLove@getTheListOfLovers");
 Route::get("/user/profilePicture/{profileEmail}/","findSomebodyToLove@displayTheProfilePhoto");
 

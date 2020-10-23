@@ -39,11 +39,11 @@ class findSomebodyToLove extends Controller
             $email = session()->get("signed_in");
             try {
                 $primaryId = DB::table("users_primary_data")->where("email","=",$email)->value("id");
-                $dataRow = DB::select("SELECT sex,age,liveIn,pierogiClassic FROM users_ids WHERE primaryId = $primaryId");
+                $dataRow = DB::select("SELECT primaryId,sex,age,liveIn,pierogiClassic FROM users_ids WHERE primaryId = $primaryId");
                 $dataRow = json_decode(json_encode($dataRow),true);
                 $searcher = 2;
                 if($dataRow[0]["sex"] == 2) $searcher = 1;
-                $loversData = DB::table("users_ids")->take(100)->select("name","surname","email","age","pierogiClassic","pierogiPersonal","lastActive")->where("sex","=",$searcher);
+                $loversData = DB::table("users_ids")->take(100)->select("primaryId","name","surname","email","age","pierogiClassic","pierogiPersonal","lastActive")->where("sex","=",$searcher);
                 $loversData = $loversData->where("liveIn","like","%".$dataRow[0]["liveIn"]."%");
                 $usersAge = $dataRow[0]["age"];
                 if($usersAge < 16){
@@ -75,17 +75,23 @@ class findSomebodyToLove extends Controller
                 array_multisort(array_map(function($element) {
                     return $element['finalGrade'];
                 }, $loversData), SORT_DESC, $loversData);
-                $loversData = array_map(function($element){
-                    return [
-                        "username" => $element["name"],
-                        "familyname" => $element["surname"],
-                        "age" => $element["age"],
-                        "pierogiBasic" => $element["pierogiClassic"],
-                        "pierogiExtended" => $element["pierogiPersonal"],
-                        "email" =>$element["email"]
-                    ];
+                $finalData = [];
+                $loversData = array_map(function($element) use ($dataRow) {
+                    $searchIfMatched = DB::table("users_matches")->where("matcherId","=",$dataRow[0]["primaryId"])->where("matchedId","=",$element["primaryId"])->count();
+                    if($searchIfMatched == 0){
+                        return [
+                            "username" => $element["name"],
+                            "familyname" => $element["surname"],
+                            "age" => $element["age"],
+                            "pierogiBasic" => $element["pierogiClassic"],
+                            "pierogiExtended" => $element["pierogiPersonal"],
+                            "email" =>$element["email"]
+                        ];
+                    }
                 },$loversData);
-                return json_encode($loversData);
+                $loversData = array_values(array_filter($loversData,function($value) { return !is_null($value) && $value !== '';})); // filtering from null when this girl has already been matched
+                $loversData = json_encode($loversData);
+                return $loversData;
             } catch (\Illuminate\Database\QueryException $e) {
                 report($e);
                 return json_encode("error".$e);

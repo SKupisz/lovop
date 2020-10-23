@@ -14,13 +14,20 @@ export default class UserPicker extends React.Component{
             loversData: null,
             loversIterator: 0,
             isMounted: false,
-            isLoaded: false
-
+            isLoaded: false,
+            matchedName: "",
+            matchedEmail: ""
         };
 
         this.convertIntoPierogiList = this.convertIntoPierogiList.bind(this);
         this.prepareForeignPierogiStaff = this.prepareForeignPierogiStaff.bind(this);
         this.throwThisOut = this.throwThisOut.bind(this);
+        this.cupidDoingHisJob = this.cupidDoingHisJob.bind(this);
+        this.makeTheMove = this.makeTheMove.bind(this);
+
+        this.infoSectionRef = React.createRef();
+        this.photoSectionRef = React.createRef();
+        this.matchedSectionRef = React.createRef();
 
         fetch("/user/support/randSomeNewLover")
         .then(res => res.json())
@@ -33,6 +40,24 @@ export default class UserPicker extends React.Component{
                 this.convertIntoPierogiList(this.state.loversData[this.state.loversIterator]["pierogiBasic"]);
             });
         });
+    }
+    async cupidDoingHisJob(params){
+        const databack = await fetch("/user/loveIsInTheAir",params).then(
+            back => back.json()
+        ).then(
+            (data) => {
+                if(data == "loversAreOnTheWay"){
+                    this.setState({
+                        matchedName: this.state.loversData[this.state.loversIterator-1]["name"],
+                        matchedEmail: this.state.loversData[this.state.loversIterator-1]["email"]
+                    },() => {
+                        this.infoSectionRef.current.style.display = "none";
+                        this.photoSectionRef.current.style.display = "none";
+                        this.matchedSectionRef.current.style.display = "block";
+                    });
+                }
+            }
+        );
     }
     convertIntoPierogiList(pierogiClassic){
         if(Number(pierogiClassic) >=64){
@@ -80,21 +105,56 @@ export default class UserPicker extends React.Component{
         }
     }
     throwThisOut(){
+        const insertNewFailedLoveParams = {
+            method: "POST",
+            headers: {"Content-type":"application/json"},
+            body: JSON.stringify({
+                email: this.state.loversData[this.state.loversIterator]["email"],
+                status: -1,
+                 _token: this.props.sendingtoken
+            })
+        };
         if(this.state.loversIterator == this.state.loversData.length-1){
-            
+
         }
         else{
             this.setState({
                 loversIterator: this.state.loversIterator+1
             },() => {
-    
+                this.cupidDoingHisJob(insertNewFailedLoveParams);
             });
         }
+        
+    }
+    makeTheMove(){
+        const insertNewFailedLoveParams = {
+            method: "POST",
+            headers: {"Content-type":"application/json"},
+            body: JSON.stringify({
+                email: this.state.loversData[this.state.loversIterator]["email"],
+                status: 1,
+                 _token: this.props.sendingtoken
+            })
+        };
+        this.cupidDoingHisJob(insertNewFailedLoveParams);
+        if(this.state.loversIterator == this.state.loversData.length-1){
+
+        }
+        else{
+            this.setState({
+                loversIterator: this.state.loversIterator+1
+            },() => {});
+        }
+    }
+    backToSearching(){
+        this.matchedSectionRef.current.style.display = "none";
+        this.photoSectionRef.current.style.display = "inline-block";
+        this.infoSectionRef.current.style.display = "inline-block";
     }
     componentDidMount(){
         this.setState({
             isMounted: true
-        },() => {console.log("mounted")});
+        },() => {});
     }
     render(){
         if(this.state.isMounted == false || this.state.isLoaded == false){
@@ -108,14 +168,14 @@ export default class UserPicker extends React.Component{
         else if(typeof(this.state.loversData) === "object" && this.state.loversData !==null){
             return(<section className="user-picker-container">
             <div className="photo-section" style={{
-                background: 'gray url("/user/profilePicture/'+this.state.loversData[this.state.loversIterator]["email"]+'")'
-            }}>
+                background: 'red url("/user/profilePicture/'+this.state.loversData[this.state.loversIterator]["email"]+'")'
+            }} ref = {this.photoSectionRef}>
                 <div className="decision-panel">
-                    <button className="panel-btn accept-btn">💘</button>
+                    <button className="panel-btn accept-btn" onClick = {() => {this.makeTheMove()}}>💘</button>
                     <button className="panel-btn deny-btn" onClick = {()=>{this.throwThisOut()}}>❌</button>
                 </div>
             </div>
-            <div className="info-section">
+            <div className="info-section" ref = {this.infoSectionRef}>
                 <header className="name-and-age">
                     {this.state.loversData === null ? "": this.state.loversData[this.state.loversIterator]["username"]+","+this.state.loversData[this.state.loversIterator]["age"]}
                 </header>
@@ -124,6 +184,16 @@ export default class UserPicker extends React.Component{
                     {this.state.pierogiList === null ? "" : this.prepareForeignPierogiStaff(this.state.loversData[this.state.loversIterator]["pierogiExtended"])}
                 </div>
             </div>
+            <section className="matched-couple" ref = {this.matchedSectionRef}>
+            <header className="matched-couple-header">Love is in the air!</header>
+            <div className="matched-info">Gratulacje! Ty i {this.state.matchedName} przypadliście sobie do gustu 💖</div>
+            <div className="buttons-container">
+                <a href = {"/user/chat/"+this.state.matchedEmail}>
+                    <button className="matched-section-btn">Czat</button>
+                </a>
+                <button className="matched-section-btn" onClick = {() => {this.backToSearching()}}>Wróć</button>
+            </div>
+        </section>
         </section>);
         }
         else{

@@ -1,0 +1,26 @@
+.error-content,.missing-matches,.user-matches{
+    width: calc(50% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1.9em;
+    font-family: "Bebas Neue",sans-serif;
+    letter-spacing: 0.04em;
+    background: $rouge-background;
+}
+.missing-matches,.user-matches{
+    width: calc(90% - 20px);
+}
+.matches-advice{
+    width: calc(60% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: "Bebas Neue",sans-serif;
+    margin-top: 4vh;
+}

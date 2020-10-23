@@ -140,8 +140,85 @@ class UserActivities extends Controller
     }
 
     function makeAMatch(Request $data){
-        if($data->has("")){
+        if($data->has("email") && $data->has("status")){
+            $email = $data->input("email");
+            $status = $data->input("status");
+            if($status != -1 && $status != 1){
+                return json_encode("wrong status");
+            }
+            $email = htmlentities($email,ENT_QUOTES,"UTF-8");
+            try {
+                $checkIfThisAccountExists = DB::table("users_primary_data")->where("email","=",$email);
+                if($checkIfThisAccountExists->count() == 0){
+                    return json_encode("failedToMatch");
+                }
+                else{
+                    $id = $checkIfThisAccountExists->value("id");
+                    $getTheUserId = DB::table("users_primary_data")->where("email","=",session()->get("signed_in"))->value("id");
+                    $checkIfThisMatchExists = DB::table("users_matches")->where("matchedId","=",$getTheUserId)->where("matcherId","=",$id);
+                    if($checkIfThisMatchExists->count() != 0){
+                        $currentStatus = $checkIfThisMatchExists->value("status");
+                        if($currentStatus == -1){
+                            return json_encode("failedLove");
+                        }
+                        else{
+                            $rowId = $checkIfThisMatchExists->value("id");
+                            DB::table("users_matches")->where("id","=",$rowId)->update([
+                                "status" => 1
+                            ]);
+                            return json_encode("loversAreOnTheWay");
+                        }
+                    }
+                    else{
+                        if($status == -1){
+                            DB::table("users_matches")->insert([
+                                "matcherId" => $getTheUserId,
+                                "matchedId" => $id,
+                                "status" => -1
+                            ]);
+                        }
+                        else{
+                            DB::table("users_matches")->insert([
+                                "matcherId" => $getTheUserId,
+                                "matchedId" => $id,
+                                "status" => 0
+                            ]);
+                        }
+                        return json_encode("firstMoveDone");
+                        
+                    }
+                }
+            } catch (\Illuminate\Database\QueryException $e) {
+                report($e);
+                return json_encode("lost connection".$e->getMessage());
+            }
+        }
+        else{
+            return json_encode("failedToMatch");
+        }
+    }
 
+    function belovedOnes(){
+        try {
+            $getTheId = DB::table("users_primary_data")->where("email","=",session()->get("signed_in"))->value("id");
+            $getTheData = DB::select("SELECT * FROM users_matches WHERE matcherId = $getTheId OR matchedId = $getTheId AND status = 1 LIMIT 50");
+            $dataQuantity = count($getTheData);
+            if($dataQuantity == 0){
+                return view("userComponents.gallery")->with("data",["quantity"=>$dataQuantity]);
+            }
+            else{   
+                $getTheData = json_decode(json_encode($getTheData),true);
+                $dataToPass = [];
+                for($i = 0 ; $i < $dataQuantity; $i++){
+                    if($getTheData[$i]["matcherId"] == session()->get("signed_in")) $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matchedId"])->get();
+                    else $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matcherId"])->get();
+                    $dataToPass[$i] = json_decode(json_encode($dataToPass[$i]),true);
+                }
+                return view("userComponents.gallery")->with("data",["quantity"=>$dataQuantity,"data"=>$getTheData]);
+            }
+        } catch (\Illuminate\Database\QueryException $e) {
+            report($e);
+            return view("userComponents.gallery")->with("data",["errorContent" => "Coś poszło nie tak, spróbuj później"]);
         }
     }
 

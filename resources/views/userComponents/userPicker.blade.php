@@ -1,1 +1,1 @@
-<div id="user-picker-wrapper"></div>
+<div id="user-picker-wrapper" data-sendingtoken = "{{csrf_token()}}"></div>
