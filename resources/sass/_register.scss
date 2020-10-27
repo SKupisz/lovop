@@ -85,3 +85,13 @@
         letter-spacing: 0.05em;
     }
 }
+@media screen and (max-width: 775px){
+    .register-input{
+        width: calc(80% - 20px);
+    }
+}
+@media screen and (max-width: 390px){
+    .register-input{
+        width: calc(90% - 20px);
+    }
+}

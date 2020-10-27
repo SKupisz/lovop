@@ -13,7 +13,6 @@ a {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  display: block;
 }
 
 .main-navbar .main-nav {
@@ -22,6 +21,7 @@ a {
 }
 
 .main-navbar .main-nav .main-nav-elems,
+.main-navbar .main-nav .dropdown-open-mode,
 .main-navbar .main-nav .dropdown-elem > .dropdown-toggle {
   color: black;
   display: inline-block;
@@ -61,12 +61,6 @@ a {
   background: rgba(255, 255, 255, 0.9);
 }
 
-.main-navbar .main-nav .edit-elem,
-.main-navbar .main-nav .logout-elem,
-.main-navbar .main-nav .dropdown-elem {
-  float: right;
-}
-
 .main-navbar .main-nav .dropdown-elem {
   border: none;
   background: none;
@@ -95,15 +89,130 @@ a {
   background: rgba(1, 1, 1, 0.4);
 }
 
+.main-navbar .main-nav .dropdown-open-mode {
+  width: 2em;
+  border: 1px solid black;
+  border-radius: 20%;
+  display: none;
+  font-size: 1.9em;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  float: right;
+}
+
+.main-navbar .main-nav .dropdown-open-mode div {
+  width: 1em;
+  height: 0.09em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: black;
+  margin-bottom: 4px;
+}
+
+.main-navbar .main-nav .settings-container {
+  display: inline-block;
+  float: right;
+}
+
+@media screen and (max-width: 903px) {
+  .main-navbar > .main-nav .main-nav-elems,
+  .main-navbar > .main-nav .dropdown-elem {
+    display: none;
+  }
+
+  .main-navbar > .main-nav .main-logo,
+  .main-navbar > .main-nav .dropdown-open-mode {
+    display: inline-block;
+  }
+
+  .main-navbar > .main-nav .main-logo {
+    width: calc(40% - 10px);
+  }
+
+  .main-navbar-extended {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+  }
+
+  .main-navbar-extended .main-nav {
+    height: 70vh;
+  }
+
+  .main-navbar-extended .main-nav .main-nav-elems,
+  .main-navbar-extended .main-nav .dropdown-elem > .dropdown-toggle {
+    width: calc(80% - 40px);
+    display: block;
+    margin: 5px auto;
+    text-align: center;
+  }
+
+  .main-navbar-extended .main-nav .logout-elem,
+  .main-navbar-extended .main-nav .edit-elem {
+    float: none;
+  }
+
+  .main-navbar-extended .main-nav .dropdown-elem,
+  .main-navbar-extended .main-nav .settings-container {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .main-navbar-extended .main-nav .settings-container {
+    width: 100%;
+  }
+
+  .main-navbar-extended .main-nav .dropdown-elem .dropdown-menu {
+    background: none;
+    width: 90% !important;
+    left: 5% !important;
+  }
+
+  .main-navbar-extended .main-nav .dropdown-elem .dropdown-menu .dropdown-item {
+    color: white;
+    transition: background 0.3s;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    padding: 10px 0px;
+    font-size: 1.6em;
+  }
+
+  .main-navbar-extended .main-nav .dropdown-elem .dropdown-menu .dropdown-item:hover {
+    background: rgba(1, 1, 1, 0.4);
+  }
+}
+
+@media screen and (max-width: 497px) {
+  .main-navbar-extended .main-nav .main-logo {
+    width: calc(60% - 20px);
+  }
+}
+
+@media screen and (max-width: 347px) {
+  .main-navbar-extended .main-nav .dropdown-open-mode {
+    width: 1.4em;
+    height: 1.4em;
+  }
+
+  .main-navbar-extended .main-nav .dropdown-open-mode div {
+    width: 0.7em;
+  }
+}
+
 .pierogi-background-and-describe {
   width: 100%;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  height: 100%;
-  position: fixed;
-  background: url(/images/background2.jpg?2172c6f03b94d1cdece8fce1ab417c24);
-  /*image from https://freeimages.com */
+  height: calc(100vh - 40px);
+  padding-top: 40px;
+  position: relative;
+  top: 0px;
   background-size: cover;
 }
 
@@ -117,7 +226,6 @@ a {
   font-size: 3.9em;
   font-family: "Bebas Neue",sans-serif;
   transform: rotate(-5deg);
-  margin-top: 40px;
   color: white;
   text-shadow: 1px 1px #111;
   margin-bottom: 140px;
@@ -139,6 +247,32 @@ a {
 
 .pierogi-background-and-describe .welcome-register-button:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 979px) {
+  .pierogi-background-and-describe .short-describe {
+    font-size: 3.1em;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .pierogi-background-and-describe .short-describe {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .pierogi-background-and-describe .short-describe {
+    font-size: 2.4em;
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .pierogi-background-and-describe .short-describe {
+    font-size: 2.1em;
+    margin-bottom: 90px;
+  }
 }
 
 .register-form-wrapper {
@@ -236,6 +370,18 @@ a {
   font-size: 1.9em;
   font-family: "Bebas Neue",sans-serif;
   letter-spacing: 0.05em;
+}
+
+@media screen and (max-width: 775px) {
+  .register-input {
+    width: calc(80% - 20px);
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .register-input {
+    width: calc(90% - 20px);
+  }
 }
 
 @-webkit-keyframes slidingInto {
@@ -772,6 +918,58 @@ body {
   font-size: 1.4em;
   font-family: "Bebas Neue",sans-serif;
   margin-top: 4vh;
+}
+
+.lovers-container {
+  width: calc(90% - 20px);
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.lovers-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.lover-widget {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-size: cover !important;
+  border-radius: 50%;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.lover-widget .main-data-label {
+  width: calc(100% - 10px);
+  padding: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.9em;
+  font-family: "Bebas Neue",sans-serif;
+  background: white;
+  position: relative;
+  top: calc(100% - 2.1em);
+  transition: opacity 0.2s;
+  opacity: 0;
+  cursor: pointer;
+  color: black;
+}
+
+.lover-widget:hover {
+  border-radius: 0;
+  filter: brightness(70%);
+}
+
+.lover-widget:hover .main-data-label {
+  opacity: 1;
 }
 
 /*!

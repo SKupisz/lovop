@@ -9,9 +9,15 @@
                 <div class="matches-advice">Zacznij szukać, aby nie było tu tak pusto</div>
             @else
                 <header class="user-matches">Lubią Cię</header>
-                @for ($i = 0 ; $i < $data["quantity"]; $i++)
-                    
-                @endfor
+                <section class="lovers-container">
+                    @for ($i = 0 ; $i < $data["quantity"]; $i++)
+                        <a href = "/user/chat/{{$data['data'][$i][0]["email"]}}">
+                            <div class="lover-widget" style = "background: rgba(255,0,0,.4) url('/user/profilePicture/{{$data['data'][$i][0]["email"]}}');">
+                                <label for="" class="main-data-label">{{$data['data'][$i][0]["name"]}}, {{$data['data'][$i][0]["age"]}}</label>
+                            </div>
+                        </a>
+                    @endfor
+                </section>
             @endif
         @endif
     @endif

@@ -201,7 +201,7 @@ class UserActivities extends Controller
     function belovedOnes(){
         try {
             $getTheId = DB::table("users_primary_data")->where("email","=",session()->get("signed_in"))->value("id");
-            $getTheData = DB::select("SELECT * FROM users_matches WHERE matcherId = $getTheId OR matchedId = $getTheId AND status = 1 LIMIT 50");
+            $getTheData = DB::select("SELECT * FROM users_matches WHERE (matcherId = $getTheId OR matchedId = $getTheId) AND status <> -1 LIMIT 50");
             $dataQuantity = count($getTheData);
             if($dataQuantity == 0){
                 return view("userComponents.gallery")->with("data",["quantity"=>$dataQuantity]);
@@ -214,7 +214,8 @@ class UserActivities extends Controller
                     else $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matcherId"])->get();
                     $dataToPass[$i] = json_decode(json_encode($dataToPass[$i]),true);
                 }
-                return view("userComponents.gallery")->with("data",["quantity"=>$dataQuantity,"data"=>$getTheData]);
+                //return $dataToPass[1][0];
+                return view("userComponents.gallery")->with("data",["quantity"=>$dataQuantity,"data"=>$dataToPass]);
             }
         } catch (\Illuminate\Database\QueryException $e) {
             report($e);
