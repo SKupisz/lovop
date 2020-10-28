@@ -48,12 +48,13 @@ export default class UserPicker extends React.Component{
             (data) => {
                 if(data == "loversAreOnTheWay"){
                     this.setState({
-                        matchedName: this.state.loversData[this.state.loversIterator-1]["name"],
+                        matchedName: this.state.loversData[this.state.loversIterator-1]["username"],
                         matchedEmail: this.state.loversData[this.state.loversIterator-1]["email"]
                     },() => {
                         this.infoSectionRef.current.style.display = "none";
                         this.photoSectionRef.current.style.display = "none";
                         this.matchedSectionRef.current.style.display = "block";
+                        console.log(this.state.loversData[0]);
                     });
                 }
             }

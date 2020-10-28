@@ -26,7 +26,7 @@ class findSomebodyToLove extends Controller
         $totalInCommon = 0;
         for($i = 0 ; $i < $len; $i++){
             $first = $userTable[count($userTable)-$i-1];
-            $second = $userTable[count($foreignTable)-$i-1];
+            $second = $foreignTable[count($foreignTable)-$i-1];
             if($first === $second) $totalInCommon++;
         }
         return ($totalInCommon/$len);

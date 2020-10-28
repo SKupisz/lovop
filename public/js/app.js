@@ -67073,12 +67073,13 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
                 }).then(function (data) {
                   if (data == "loversAreOnTheWay") {
                     _this2.setState({
-                      matchedName: _this2.state.loversData[_this2.state.loversIterator - 1]["name"],
+                      matchedName: _this2.state.loversData[_this2.state.loversIterator - 1]["username"],
                       matchedEmail: _this2.state.loversData[_this2.state.loversIterator - 1]["email"]
                     }, function () {
                       _this2.infoSectionRef.current.style.display = "none";
                       _this2.photoSectionRef.current.style.display = "none";
                       _this2.matchedSectionRef.current.style.display = "block";
+                      console.log(_this2.state.loversData[0]);
                     });
                   }
                 });

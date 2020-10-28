@@ -744,7 +744,7 @@ body {
   width: 60%;
   border-radius: 10px 0px 0px 10px;
   background-size: cover !important;
-  background-position: center;
+  background-position: center !important;
 }
 
 .user-picker-container .photo-section .decision-panel {
@@ -754,7 +754,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  margin-top: 70%;
+  margin-top: 56vh;
 }
 
 .user-picker-container .photo-section .decision-panel .panel-btn {
@@ -886,6 +886,96 @@ body {
 
 .user-picker-container .matched-couple .buttons-container .matched-section-btn:hover {
   filter: brightness(70%);
+}
+
+@media screen and (max-width: 1541px) {
+  .user-picker-container .info-section .pierogi-section .fav-pierogi-elem {
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .user-picker-container {
+    width: calc(90% - 20px);
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .user-picker-container {
+    width: calc(95% - 20px);
+  }
+
+  .user-picker-container .info-section .name-and-age {
+    font-size: 2.1em;
+    margin-bottom: 4vh;
+  }
+
+  .user-picker-container .info-section .pierogi-section .fav-pierogi-elem {
+    display: block;
+    width: calc(90% - 20px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 647px) {
+  .user-picker-container {
+    height: 90vh;
+  }
+
+  .user-picker-container .photo-section,
+  .user-picker-container .info-section {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .user-picker-container .photo-section .decision-panel {
+    margin-top: 2vh;
+  }
+
+  .user-picker-container .info-section {
+    height: 33vh;
+    position: relative;
+    top: -33vh;
+    border-radius: 0px 0px 10px 10px;
+  }
+
+  .user-picker-container .info-section .name-and-age {
+    margin-bottom: 2vh;
+  }
+
+  .user-picker-container .info-section .pierogi-section .fav-pierogi-elem {
+    display: inline-block;
+    width: calc(50% - 20px);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media screen and (max-width: 592px) {
+  .user-picker-container .matched-couple .matched-couple-header {
+    font-size: 2.4em;
+  }
+
+  .user-picker-container .matched-couple .matched-info {
+    font-size: 1.4em;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .user-picker-container {
+    width: calc(100% - 20px);
+  }
+
+  .user-picker-container .info-section .pierogi-section .fav-pierogi-elem {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .user-picker-container .info-section .pierogi-section .fav-pierogi-elem {
+    font-size: 0.7em;
+  }
 }
 
 .error-content,
