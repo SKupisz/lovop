@@ -620,6 +620,65 @@ body {
   display: none;
 }
 
+@media screen and (max-width: 1293px) {
+  .data-form-wrapper .pierogi-section {
+    width: calc(95% - 20px);
+  }
+}
+
+@media screen and (max-width: 1087px) {
+  .data-form-wrapper .pierogi-section .pierogi-buttons .pierogi-classic-btn {
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 1087px) {
+  .data-form-wrapper .pierogi-section .pierogi-buttons .pierogi-classic-btn {
+    width: calc(50% - 20px);
+    font-size: 1.02em;
+  }
+}
+
+@media screen and (max-width: 858px) {
+  .data-form-wrapper {
+    width: calc(80% - 20px);
+  }
+
+  .data-form-wrapper .data-formInput {
+    width: calc(80% - 20px);
+  }
+}
+
+@media screen and (max-width: 681px) {
+  .data-form-wrapper .data-formNumberInput {
+    width: calc(45% - 20px);
+  }
+
+  .data-form-wrapper .pierogi-section {
+    width: calc(100% - 10px);
+    padding: 5px;
+  }
+
+  .data-form-wrapper .pierogi-section .pierogi-buttons .pierogi-classic-btn {
+    width: calc(100% - 20px);
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .data-form-wrapper {
+    width: calc(95% - 20px);
+  }
+
+  .data-form-wrapper .data-formInput {
+    width: calc(95% - 20px);
+  }
+
+  .data-form-wrapper .pierogi-section .pierogi-section-header {
+    font-size: 1.5em;
+  }
+}
+
 .expiration-wrapper {
   width: calc(95% - 10px);
   padding: 0px 5px;
@@ -659,6 +718,18 @@ body {
   font-family: "Bebas Neue",sans-serif;
   letter-spacing: 0.04em;
   background: linear-gradient(90deg, transparent 0%, rgba(223, 71, 35, 0.4) 70%, transparent 100%);
+}
+
+@media screen and (max-width: 858px) {
+  .new-user-welcome-header {
+    font-size: 1.8em;
+  }
+}
+
+@media screen and (max-width: 681px) {
+  .new-user-welcome-header {
+    font-size: 1.5em;
+  }
 }
 
 @-webkit-keyframes blinking {

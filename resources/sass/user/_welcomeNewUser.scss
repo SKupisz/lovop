@@ -11,3 +11,13 @@
     letter-spacing: 0.04em;
     background: $rouge-background;
 }
+@media screen and (max-width: 858px){
+    .new-user-welcome-header{
+        font-size: 1.8em;
+    }
+}
+@media screen and (max-width: 681px){
+    .new-user-welcome-header{
+        font-size: 1.5em;
+    }
+}
