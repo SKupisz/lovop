@@ -65,7 +65,9 @@ export default class Navbar extends React.Component{
                         <a href="/" class="main-logo main-nav-elems">
                             <span class="logo-text">Lovop</span>
                         </a>
-                        <div class="main-nav-elems">Główna</div>
+                        <a href = "/">
+                            <div class="main-nav-elems">Główna</div>
+                        </a>
                         <a href = "/about" className = "main-nav-elems">
                             O nas
                         </a>

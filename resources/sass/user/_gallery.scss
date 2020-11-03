@@ -70,3 +70,13 @@
         opacity: 1;
     }
 }
+@media screen and (max-width: 779px){
+    .lover-widget{
+        width: 150px;
+        height: 150px;
+        .main-data-label{
+            font-size: 1.5em;
+            top: calc(100% - 2.6em);
+        }
+    }
+}

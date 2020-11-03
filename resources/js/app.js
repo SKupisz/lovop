@@ -19,3 +19,5 @@ require("./components/About");
 require("./components/dataForm/DataFormCheckboxes");
 require("./components/dataForm/DataFormPierogi");
 require("./components/UserPicker");
+
+require("./components/chat/SendingForm");

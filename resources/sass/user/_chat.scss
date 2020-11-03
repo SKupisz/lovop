@@ -1,0 +1,122 @@
+.chat-container{
+    width: calc(60% - 20px);
+    padding: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 80vh;
+    background: rgba(80,5,94,.6);
+    margin-top: 1vh;
+    border-radius: 10px;
+    .chat-history{
+        width: calc(100% - 10px);
+        padding: 5px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        height: 80%;
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 1vh;
+    }
+    .chat-form{
+        width: calc(90% - 20px);
+        padding: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        .chat-form-input,.chat-form-submit{
+            vertical-align: top;
+            display: inline-block;
+            margin: 0px 5px;
+            font-size: 1.9em;
+            font-family: "Bebas Neue",sans-serif;
+            padding: 5px;
+            border: none;
+            background: rgba(255,255,255,.2);
+        }
+        .chat-form-input{
+            width: calc(70% - 10px);
+            border-radius: 10px;
+            text-indent: 0.5em;
+        }
+        ::placeholder{
+            color: rgba(255,255,255,.8);
+        }
+        .chat-form-submit{
+            border-radius: 20px;
+            width: calc(1.9em + 10px);
+            transition: filter 0.4s;
+        }
+        .chat-form-submit:hover{
+            filter: brightness(150%);
+        }
+        .chat-form-submit:focus{
+            outline: none;
+        }
+    }
+}
+@media screen and (max-width: 802px){
+    .chat-container{
+        width: calc(80% - 20px);
+        .chat-form{
+            .chat-form-input,.chat-form-submit{
+                font-size: 1.5em;
+            }
+            .chat-form-input{
+                width: calc(80% - 10px);
+            }
+            .chat-form-submit{
+                width: calc(1.5em + 10px);
+            }
+        }
+    }
+}
+@media screen and (max-width: 519px){
+    .chat-container{
+        width: calc(95% - 20px);
+        .chat-form{
+            width: calc(100% - 20px);
+        }
+    }
+}
+@media screen and (max-width: 376px){
+    .chat-container{
+        width: calc(100% - 20px);
+        .chat-form{
+            width: calc(100% - 20px);
+            .chat-form-input,.chat-form-submit{
+                font-size: 1.2em;
+            }
+            .chat-form-submit{
+                width: calc(1.2em + 10px);
+            }
+        }
+    }
+}
+@media screen and (max-width: 290px){
+    .chat-container{
+        width: calc(100% - 20px);
+        height: 81vh;
+        .chat-form{
+            width: calc(100% - 20px);
+            .chat-form-input,.chat-form-submit{
+                font-size: 1.2em;
+            }
+            .chat-form-input{
+                width: calc(100% - 10px);
+                margin-bottom: 5px;
+            }
+            .chat-form-submit{
+                width: calc(70% - 10px);
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                border-radius: 10px;
+
+            }
+        }
+    }
+}
