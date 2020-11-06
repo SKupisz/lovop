@@ -210,8 +210,12 @@ class UserActivities extends Controller
                 $getTheData = json_decode(json_encode($getTheData),true);
                 $dataToPass = [];
                 for($i = 0 ; $i < $dataQuantity; $i++){
-                    if($getTheData[$i]["matcherId"] == session()->get("signed_in")) $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matchedId"])->get();
-                    else $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matcherId"])->get();
+                    if($getTheData[$i]["matcherId"] == $getTheId){ 
+                        $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matchedId"])->get();
+                    }
+                    else {
+                        $dataToPass[$i] = DB::table("users_ids")->select("name","age","email")->where("primaryId","=",$getTheData[$i]["matcherId"])->get();
+                    }
                     $dataToPass[$i] = json_decode(json_encode($dataToPass[$i]),true);
                 }
                 //return $dataToPass[1][0];

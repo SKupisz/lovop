@@ -42,8 +42,10 @@ Route::get("/logout","UserActivities@logout");
 Route::post("/register","SignInOutController@registerNewUser");
 Route::post("/signin","SignInOutController@SignInUser");
 Route::post("/updateData","UserActivities@fillTheData");
+Route::post("/user/chat/sendTheMessage","LoversChat@sendTheMessage");
 
 Route::post("/user/loveIsInTheAir","UserActivities@makeAMatch");
 Route::get("/user/support/randSomeNewLover","findSomebodyToLove@getTheListOfLovers");
 Route::get("/user/profilePicture/{profileEmail}/","findSomebodyToLove@displayTheProfilePhoto");
+Route::get("/user/getConvData/{profileEmail}","LoversChat@readTheData");
 

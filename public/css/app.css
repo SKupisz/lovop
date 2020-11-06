@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sansita+Swashed&display=swap);@import url(https://fonts.googleapis.com/css2?family=Oswald&display=swap);body {
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sansita+Swashed&display=swap);@import url(https://fonts.googleapis.com/css2?family=Oswald&display=swap);@import url(https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap);body {
   margin: 0;
   padding: 0;
   overflow-x: hidden !important;
@@ -1169,6 +1169,36 @@ body {
   background: white;
   border-radius: 10px;
   margin-bottom: 1vh;
+  overflow-y: auto;
+  background: url(/images/background-pattern.jpg?f94e0fb0a741c51cbb51527a0bdbb56b);
+}
+
+.chat-container .chat-history .not-result-div,
+.chat-container .chat-history .result-div {
+  width: calc(90% - 20px);
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.2em;
+  font-family: "Bebas Neue",sans-serif;
+}
+
+.chat-container .chat-history .result-div {
+  font-family: "Oswald",sans-serif;
+}
+
+.chat-container .chat-history .result-div .message-div {
+  width: calc(60% - 20px);
+  padding: 10px;
+  display: block;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 7px;
+}
+
+.chat-container .chat-history .result-div .your-div {
+  margin-left: auto;
 }
 
 .chat-container .chat-form {
@@ -1275,6 +1305,12 @@ body {
   .chat-container {
     width: calc(100% - 20px);
     height: 81vh;
+  }
+
+  .chat-container .chat-history .not-result-div,
+  .chat-container .chat-history .result-div {
+    width: calc(100% - 10px);
+    padding: 5px;
   }
 
   .chat-container .chat-form {

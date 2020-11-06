@@ -21,3 +21,4 @@ require("./components/dataForm/DataFormPierogi");
 require("./components/UserPicker");
 
 require("./components/chat/SendingForm");
+require("./components/chat/ReadingTheData");
