@@ -2,6 +2,7 @@
 <input type="text" name="surname" id="" placeholder="Nazwisko (opcjonalnie)" class="data-formInput" value="{{$directive[1][0]["surname"]}}">
 <input type="text" name="living-place" id="" placeholder="Miasto zamieszkania" class="data-formInput" value="{{$directive[1][0]["liveIn"]}}">
 <input type="number" name="age" id="" min="13" required="required" placeholder="Wiek" class="data-formNumberInput" value="{{$directive[1][0]["age"]}}">
+<div id = "user-describe" data-currentDesc="{{$directive[1][0]["currentDesc"]}}"></div>
 <label for="fileInput" class="pick-up-a-photo" onclick = 'document.querySelector(".data-formFileInput").click()'>Zdjęcie (niewymagane)</label>
 <input type="file" name="profilePhoto" id="" class="data-formFileInput" id = "fileInput"/>
 <div class="sex-section">

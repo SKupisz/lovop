@@ -18,17 +18,19 @@
     height: 80vh;
     margin-top: 5px;
     border-radius: 10px;
-    .loading-div{
-        width: calc(40% - 20px);
+    .loading-div,.no-users{
         background: rgba(255,255,255,.4);
         border-radius: 10px;
-        padding: 10px;
-        font-size: 1.9em;
         font-family: "Bebas Neue",sans-serif;
         display: block;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+    }
+    .loading-div{
+        width: calc(40% - 20px);
+        padding: 10px;
+        font-size: 1.9em;
         .loading-div-dots{
             opacity: 1;
             animation-name: blinking;
@@ -41,6 +43,11 @@
         .dot-3{
             animation-delay: 0.8s;
         }
+    }
+    .no-users{
+        width: calc(100% - 20px);
+        padding: 20px 10px;
+        font-size: 2.2em;
     }
     .photo-section,.info-section{
         display: inline-block;
@@ -189,9 +196,13 @@
         }
     }
 }
-@media screen and (max-width: 1279px){
+@media screen and (max-width: 1280px){
     .user-picker-container{
         width: calc(90% - 20px);
+        .no-users{
+            width: calc(100% - 20px);
+            font-size: 2.1em;
+        }
     }
 }
 @media screen and (max-width: 1000px){
@@ -213,9 +224,21 @@
         }
     }
 }
+@media screen and (max-width: 903px){
+    .user-picker-container{
+        .no-users{
+            width: calc(70% - 20px);
+            font-size: 2.1em;
+        }
+    }
+}
 @media screen and (max-width: 647px){
     .user-picker-container{
         height: 90vh;
+        .no-users{
+            width: calc(90% - 20px);
+            font-size: 1.9em;
+        }
         .photo-section,.info-section{
             width: 100%;
             border-radius: 10px;
@@ -226,9 +249,9 @@
             }
         }
         .info-section{
-            height: 33vh;
+            height: 39vh;
             position: relative;
-            top: -33vh;
+            top: -39vh;
             border-radius: 0px 0px 10px 10px;
             .name-and-age{
                 margin-bottom: 2vh;
@@ -259,6 +282,10 @@
 @media screen and (max-width: 411px){
     .user-picker-container{
         width: calc(100% - 20px);
+        .no-users{
+            width: calc(100% - 20px);
+            font-size: 1.5em;
+        }
         .info-section{
             .pierogi-section{
                 .fav-pierogi-elem{

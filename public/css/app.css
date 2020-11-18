@@ -536,6 +536,27 @@ body {
   margin: 8px auto;
 }
 
+.data-form-wrapper .data-formTextarea {
+  min-height: 20vh;
+  max-height: 30vh;
+  font-family: "Oswald",sans-serif;
+}
+
+.data-form-wrapper .counter-wrapper {
+  display: block;
+  margin-left: auto;
+  margin-right: calc(15% + 20px);
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Bebas Neue",sans-serif;
+  font-size: 1.3em;
+  background: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1vh;
+}
+
 .data-form-wrapper .data-formFileInput {
   width: 0;
   height: 0;
@@ -647,6 +668,12 @@ body {
   .data-form-wrapper .data-formInput {
     width: calc(80% - 20px);
   }
+
+  .data-form-wrapper .counter-wrapper {
+    margin-right: calc(20% - 10px);
+    font-size: 1.1em;
+    padding: 0px 5px;
+  }
 }
 
 @media screen and (max-width: 681px) {
@@ -672,6 +699,10 @@ body {
 
   .data-form-wrapper .data-formInput {
     width: calc(95% - 20px);
+  }
+
+  .data-form-wrapper .counter-wrapper {
+    margin-right: calc(10% - 10px);
   }
 
   .data-form-wrapper .pierogi-section .pierogi-section-header {
@@ -771,17 +802,21 @@ body {
   border-radius: 10px;
 }
 
-.user-picker-container .loading-div {
-  width: calc(40% - 20px);
+.user-picker-container .loading-div,
+.user-picker-container .no-users {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 10px;
-  padding: 10px;
-  font-size: 1.9em;
   font-family: "Bebas Neue",sans-serif;
   display: block;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+}
+
+.user-picker-container .loading-div {
+  width: calc(40% - 20px);
+  padding: 10px;
+  font-size: 1.9em;
 }
 
 .user-picker-container .loading-div .loading-div-dots {
@@ -802,6 +837,12 @@ body {
 .user-picker-container .loading-div .dot-3 {
   -webkit-animation-delay: 0.8s;
           animation-delay: 0.8s;
+}
+
+.user-picker-container .no-users {
+  width: calc(100% - 20px);
+  padding: 20px 10px;
+  font-size: 2.2em;
 }
 
 .user-picker-container .photo-section,
@@ -965,9 +1006,14 @@ body {
   }
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1280px) {
   .user-picker-container {
     width: calc(90% - 20px);
+  }
+
+  .user-picker-container .no-users {
+    width: calc(100% - 20px);
+    font-size: 2.1em;
   }
 }
 
@@ -989,9 +1035,21 @@ body {
   }
 }
 
+@media screen and (max-width: 903px) {
+  .user-picker-container .no-users {
+    width: calc(70% - 20px);
+    font-size: 2.1em;
+  }
+}
+
 @media screen and (max-width: 647px) {
   .user-picker-container {
     height: 90vh;
+  }
+
+  .user-picker-container .no-users {
+    width: calc(90% - 20px);
+    font-size: 1.9em;
   }
 
   .user-picker-container .photo-section,
@@ -1005,9 +1063,9 @@ body {
   }
 
   .user-picker-container .info-section {
-    height: 33vh;
+    height: 39vh;
     position: relative;
-    top: -33vh;
+    top: -39vh;
     border-radius: 0px 0px 10px 10px;
   }
 
@@ -1036,6 +1094,11 @@ body {
 @media screen and (max-width: 411px) {
   .user-picker-container {
     width: calc(100% - 20px);
+  }
+
+  .user-picker-container .no-users {
+    width: calc(100% - 20px);
+    font-size: 1.5em;
   }
 
   .user-picker-container .info-section .pierogi-section .fav-pierogi-elem {
@@ -1169,8 +1232,8 @@ body {
   background: white;
   border-radius: 10px;
   margin-bottom: 1vh;
-  overflow-y: auto;
-  background: url(/images/background-pattern.jpg?f94e0fb0a741c51cbb51527a0bdbb56b);
+  overflow-y: scroll;
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .chat-container .chat-history .not-result-div,
@@ -1199,6 +1262,11 @@ body {
 
 .chat-container .chat-history .result-div .your-div {
   margin-left: auto;
+}
+
+.chat-container .chat-history .result-div .heart-div {
+  background: none;
+  font-size: 1.4em;
 }
 
 .chat-container .chat-form {
@@ -1255,6 +1323,16 @@ body {
 
 @media screen and (max-width: 802px) {
   .chat-container {
+    width: calc(80% - 20px);
+  }
+
+  .chat-container .chat-history .not-result-div,
+  .chat-container .chat-history .result-div {
+    font-size: 1em;
+  }
+
+  .chat-container .chat-history .not-result-div .message-div,
+  .chat-container .chat-history .result-div .message-div {
     width: calc(80% - 20px);
   }
 

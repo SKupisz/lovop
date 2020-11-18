@@ -6,6 +6,7 @@ use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Cookie;
 use Carbon\Carbon;
 
 use App\Http\Controllers\UserActivities;
@@ -100,6 +101,10 @@ class SignInOutController extends Controller
     }
 
     function SignInUser(Request $data){
+        if(Cookie::get("signed_in") && Cookie::get("mode")){
+            session(["mode" => Cookie::get("mode"), "signed_in"=>Cookie::get("signed_in")]);
+            return redirect("/user");
+        }
         if($data->has("user-email") && $data->has("user-passwd")){
             $email = $data->input("user-email");
             $passwd = $data->input("user-passwd");
@@ -128,6 +133,8 @@ class SignInOutController extends Controller
                             ]);
                         }
                         session(["mode" => $mode, "signed_in"=>$email]);
+                        Cookie::queue(Cookie::make("signed_in",$email,43200));
+                        Cookie::queue(Cookie::make("mode",$mode,43200));
                         return redirect("/user");
                     }
                 }

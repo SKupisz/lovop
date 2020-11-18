@@ -43,7 +43,7 @@ class findSomebodyToLove extends Controller
                 $dataRow = json_decode(json_encode($dataRow),true);
                 $searcher = 2;
                 if($dataRow[0]["sex"] == 2) $searcher = 1;
-                $loversData = DB::table("users_ids")->take(100)->select("primaryId","name","surname","email","age","pierogiClassic","pierogiPersonal","lastActive")->where("sex","=",$searcher);
+                $loversData = DB::table("users_ids")->take(100)->select("primaryId","name","surname","email","age","pierogiClassic","pierogiPersonal","lastActive","profileDesc")->where("sex","=",$searcher);
                 $loversData = $loversData->where("liveIn","like","%".$dataRow[0]["liveIn"]."%");
                 $usersAge = $dataRow[0]["age"];
                 if($usersAge < 16){
@@ -76,17 +76,21 @@ class findSomebodyToLove extends Controller
                     return $element['finalGrade'];
                 }, $loversData), SORT_DESC, $loversData);
                 $finalData = [];
-                $loversData = array_map(function($element) use ($dataRow) {
-                    $searchIfMatched = DB::table("users_matches")->where("matcherId","=",$dataRow[0]["primaryId"])->where("matchedId","=",$element["primaryId"])->count();
+                $loversData = array_map(function($element) use ($primaryId) {
+                    $searchIfMatched = DB::table("users_matches")->where("matcherId","=",$primaryId)->where("matchedId","=",$element["primaryId"])->count();
                     if($searchIfMatched == 0){
-                        return [
-                            "username" => $element["name"],
-                            "familyname" => $element["surname"],
-                            "age" => $element["age"],
-                            "pierogiBasic" => $element["pierogiClassic"],
-                            "pierogiExtended" => $element["pierogiPersonal"],
-                            "email" =>$element["email"]
-                        ];
+                        $searchIfOppositeSituation = DB::table("users_matches")->where("matcherId","=",$element["primaryId"])->where("matchedId","=",$primaryId)->where("status","!=",0)->count();
+                        if($searchIfOppositeSituation == 0){
+                            return [
+                                "username" => $element["name"],
+                                "familyname" => $element["surname"],
+                                "age" => $element["age"],
+                                "pierogiBasic" => $element["pierogiClassic"],
+                                "pierogiExtended" => $element["pierogiPersonal"],
+                                "email" =>$element["email"],
+                                "describe" => $element["profileDesc"]
+                            ];
+                        }
                     }
                 },$loversData);
                 $loversData = array_values(array_filter($loversData,function($value) { return !is_null($value) && $value !== '';})); // filtering from null when this girl has already been matched

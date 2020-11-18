@@ -20,8 +20,8 @@
         background: white;
         border-radius: 10px;
         margin-bottom: 1vh;
-        overflow-y: auto;
-        background: url("./public/img/backgrounds/background-pattern.jpg");
+        overflow-y: scroll;
+        background: rgba(255,255,255,.7);
         .not-result-div,.result-div{
             width: calc(90% - 20px);
             padding: 10px;
@@ -43,6 +43,10 @@
             }
             .your-div{
                 margin-left: auto;
+            }
+            .heart-div{
+                background: none;
+                font-size: 1.4em;
             }
         }
     }
@@ -86,6 +90,14 @@
 @media screen and (max-width: 802px){
     .chat-container{
         width: calc(80% - 20px);
+        .chat-history{
+            .not-result-div,.result-div{
+                font-size: 1em;
+                .message-div{
+                    width: calc(80% - 20px);
+                }
+            }
+        }
         .chat-form{
             .chat-form-input,.chat-form-submit{
                 font-size: 1.5em;

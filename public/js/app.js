@@ -66573,6 +66573,8 @@ __webpack_require__(/*! ./components/dataForm/DataFormCheckboxes */ "./resources
 
 __webpack_require__(/*! ./components/dataForm/DataFormPierogi */ "./resources/js/components/dataForm/DataFormPierogi.jsx");
 
+__webpack_require__(/*! ./components/dataForm/DataFormDescribe */ "./resources/js/components/dataForm/DataFormDescribe.jsx");
+
 __webpack_require__(/*! ./components/UserPicker */ "./resources/js/components/UserPicker.jsx");
 
 __webpack_require__(/*! ./components/chat/SendingForm */ "./resources/js/components/chat/SendingForm.jsx");
@@ -67038,7 +67040,8 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
       isMounted: false,
       isLoaded: false,
       matchedName: "",
-      matchedEmail: ""
+      matchedEmail: "",
+      outOfUsers: false
     };
     _this.convertIntoPierogiList = _this.convertIntoPierogiList.bind(_assertThisInitialized(_this));
     _this.prepareForeignPierogiStaff = _this.prepareForeignPierogiStaff.bind(_assertThisInitialized(_this));
@@ -67051,13 +67054,23 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
     fetch("/user/support/randSomeNewLover").then(function (res) {
       return res.json();
     }).then(function (result) {
-      _this.setState({
-        loversData: result,
-        loversIterator: 0,
-        isLoaded: true
-      }, function () {
-        _this.convertIntoPierogiList(_this.state.loversData[_this.state.loversIterator]["pierogiBasic"]);
-      });
+      console.log(result.length);
+
+      if (result.length == 0) {
+        _this.setState({
+          isLoaded: true,
+          outOfUsers: true
+        }, function () {});
+      } else {
+        _this.setState({
+          loversData: result,
+          loversIterator: 0,
+          isLoaded: true,
+          outOfUsers: false
+        }, function () {
+          _this.convertIntoPierogiList(_this.state.loversData[_this.state.loversIterator]["pierogiBasic"]);
+        });
+      }
     });
     return _this;
   }
@@ -67087,6 +67100,7 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
                       _this2.matchedSectionRef.current.style.display = "block";
                       console.log(_this2.state.loversData[0]);
                     });
+                  } else {//console.log(data);
                   }
                 });
 
@@ -67171,8 +67185,6 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "throwThisOut",
     value: function throwThisOut() {
-      var _this4 = this;
-
       var insertNewFailedLoveParams = {
         method: "POST",
         headers: {
@@ -67184,13 +67196,12 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
           _token: this.props.sendingtoken
         })
       };
+      this.cupidDoingHisJob(insertNewFailedLoveParams);
 
       if (this.state.loversIterator == this.state.loversData.length - 1) {} else {
         this.setState({
           loversIterator: this.state.loversIterator + 1
-        }, function () {
-          _this4.cupidDoingHisJob(insertNewFailedLoveParams);
-        });
+        }, function () {});
       }
     }
   }, {
@@ -67232,7 +67243,7 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
       if (this.state.isMounted == false || this.state.isLoaded == false) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
@@ -67249,6 +67260,12 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
           htmlFor: "",
           className: "loading-div-dots dot-3"
         }, ".")));
+      } else if (this.state.outOfUsers == true) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
+          className: "user-picker-container"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "no-users"
+        }, "Niestety aktualnie nie mamy nikogo w twoim typie. Sprawd\u017A p\xF3\u017Aniej \uD83E\uDDE1"));
       } else if (_typeof(this.state.loversData) === "object" && this.state.loversData !== null) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
           className: "user-picker-container"
@@ -67263,12 +67280,12 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "panel-btn accept-btn",
           onClick: function onClick() {
-            _this5.makeTheMove();
+            _this4.makeTheMove();
           }
         }, "\uD83D\uDC98"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "panel-btn deny-btn",
           onClick: function onClick() {
-            _this5.throwThisOut();
+            _this4.throwThisOut();
           }
         }, "\u274C"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "info-section",
@@ -67276,6 +67293,8 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("header", {
           className: "name-and-age"
         }, this.state.loversData === null ? "" : this.state.loversData[this.state.loversIterator]["username"] + "," + this.state.loversData[this.state.loversIterator]["age"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "describe-container"
+        }, this.state.loversData === null ? "" : this.state.loversData[this.state.loversIterator]["describe"]), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
           className: "pierogi-section"
         }, this.state.pierogiRepresentative, this.state.pierogiList === null ? "" : this.prepareForeignPierogiStaff(this.state.loversData[this.state.loversIterator]["pierogiExtended"]))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
           className: "matched-couple",
@@ -67293,7 +67312,7 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
         }, "Czat")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
           className: "matched-section-btn",
           onClick: function onClick() {
-            _this5.backToSearching();
+            _this4.backToSearching();
           }
         }, "Wr\xF3\u0107"))));
       } else {
@@ -67830,6 +67849,124 @@ var DataFormCheckboxes = /*#__PURE__*/function (_React$Component) {
 if (document.getElementById("sex-answers")) {
   var props = Object.assign({}, document.getElementById("sex-answers").dataset);
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DataFormCheckboxes, props), document.getElementById("sex-answers"));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/dataForm/DataFormDescribe.jsx":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/dataForm/DataFormDescribe.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DataFormDescribe; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var DataFormDescribe = /*#__PURE__*/function (_React$Component) {
+  _inherits(DataFormDescribe, _React$Component);
+
+  var _super = _createSuper(DataFormDescribe);
+
+  function DataFormDescribe(props) {
+    var _this;
+
+    _classCallCheck(this, DataFormDescribe);
+
+    _this = _super.call(this, props);
+    var currDesc = "",
+        currLen = 0;
+
+    if (_this.props.currentdesc) {
+      currDesc = _this.props.currentdesc;
+      currLen = _this.props.currentdesc.length;
+    }
+
+    _this.state = {
+      currentDescribe: currDesc,
+      currentLen: currLen,
+      maxLength: 100
+    };
+    _this.changeText = _this.changeText.bind(_assertThisInitialized(_this));
+    _this.textRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    return _this;
+  }
+
+  _createClass(DataFormDescribe, [{
+    key: "changeText",
+    value: function changeText(newText) {
+      if (newText.length <= this.state.maxLength) {
+        this.setState({
+          currentDescribe: newText,
+          currentLen: newText.length
+        }, function () {});
+      } else {
+        this.textRef.current.value = this.state.currentDescribe;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        name: "userDesc",
+        ref: this.textRef,
+        className: "data-formInput data-formTextarea",
+        onChange: function onChange(event) {
+          _this2.changeText(event.target.value);
+        }
+      }, this.state.currentDescribe), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "counter-wrapper"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "",
+        className: "counter-number",
+        style: {
+          color: "rgba(" + 255 * this.state.currentLen / this.state.maxLength + "," + 255 * (this.state.maxLength - this.state.currentLen) / this.state.maxLength + ",0,1)"
+        }
+      }, this.state.currentLen), "/", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: ""
+      }, this.state.maxLength)));
+    }
+  }]);
+
+  return DataFormDescribe;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+if (document.getElementById("user-describe")) {
+  var props = Object.assign({}, document.getElementById("user-describe").dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DataFormDescribe, props), document.getElementById("user-describe"));
 }
 
 /***/ }),

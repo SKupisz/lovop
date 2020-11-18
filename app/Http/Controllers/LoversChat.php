@@ -44,8 +44,7 @@ class LoversChat extends Controller
                 ]);
                 return json_encode("sent");
             } catch (Illuminate\Database\QueryException $e) {
-                report($e);
-                return json_encode("database error");
+                return json_encode("database error".$e->getMessage());
             }
         }
         else{
@@ -64,7 +63,7 @@ class LoversChat extends Controller
                 return json_encode("no user found");
             }
             $adressId = $checkIfUserExist->value("id");
-            $email = session()->get("signed_in");
+            $email = "szym-ku@wp.pl"; // only for test purposes - turn it back to the session value asap
             $primaryId = DB::table("users_primary_data")->where("email","=",$email)->value("id");
             $potentialDBName = $adressId."_".$primaryId."_c";
             $checkIfTheDataBaseNameRight = DB::select("SELECT * FROM information_schema.tables WHERE table_schema = 'lovop' AND table_name = '".$potentialDBName."' LIMIT 1");

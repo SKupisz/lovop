@@ -32,6 +32,23 @@
         text-indent: 0.5em;
         margin: 8px auto;
     }
+    .data-formTextarea{
+        min-height: 20vh;
+        max-height: 30vh;
+        font-family: "Oswald",sans-serif;
+    }
+    .counter-wrapper{
+        display: block;
+        margin-left: auto;
+        margin-right: calc(15% + 20px);
+        padding: 5px 10px;
+        border-radius: 5px;
+        width: fit-content;
+        font-family: "Bebas Neue",sans-serif;
+        font-size: 1.3em;
+        background: rgba(255,255,255,.9);
+        margin-bottom: 1vh;
+    }
     .data-formFileInput{
         width: 0;
         height: 0;
@@ -131,6 +148,11 @@
         .data-formInput{
             width: calc(80% - 20px);
         }
+        .counter-wrapper{
+            margin-right: calc(20% - 10px);
+            font-size: 1.1em;
+            padding: 0px 5px;
+        }
     }
 }
 @media screen and (max-width: 681px){
@@ -155,6 +177,9 @@
         width: calc(95% - 20px);
         .data-formInput{
             width: calc(95% - 20px);
+        }
+        .counter-wrapper{
+            margin-right: calc(10% - 10px);
         }
         .pierogi-section{
             .pierogi-section-header{

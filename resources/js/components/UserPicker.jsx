@@ -16,7 +16,8 @@ export default class UserPicker extends React.Component{
             isMounted: false,
             isLoaded: false,
             matchedName: "",
-            matchedEmail: ""
+            matchedEmail: "",
+            outOfUsers: false
         };
 
         this.convertIntoPierogiList = this.convertIntoPierogiList.bind(this);
@@ -32,13 +33,25 @@ export default class UserPicker extends React.Component{
         fetch("/user/support/randSomeNewLover")
         .then(res => res.json())
         .then(result => {
-            this.setState({
-                loversData: result,
-                loversIterator: 0,
-                isLoaded: true
-            },() => {
-                this.convertIntoPierogiList(this.state.loversData[this.state.loversIterator]["pierogiBasic"]);
-            });
+            console.log(result.length);
+            if(result.length == 0){
+                this.setState({
+                    isLoaded: true,
+                    outOfUsers: true
+                },() => {
+
+                });
+            }
+            else{
+                this.setState({
+                    loversData: result,
+                    loversIterator: 0,
+                    isLoaded: true,
+                    outOfUsers: false
+                },() => {
+                    this.convertIntoPierogiList(this.state.loversData[this.state.loversIterator]["pierogiBasic"]);
+                });
+            }
         });
     }
     async cupidDoingHisJob(params){
@@ -56,6 +69,9 @@ export default class UserPicker extends React.Component{
                         this.matchedSectionRef.current.style.display = "block";
                         console.log(this.state.loversData[0]);
                     });
+                }
+                else{
+                    //console.log(data);
                 }
             }
         );
@@ -115,6 +131,7 @@ export default class UserPicker extends React.Component{
                  _token: this.props.sendingtoken
             })
         };
+        this.cupidDoingHisJob(insertNewFailedLoveParams);
         if(this.state.loversIterator == this.state.loversData.length-1){
 
         }
@@ -122,7 +139,6 @@ export default class UserPicker extends React.Component{
             this.setState({
                 loversIterator: this.state.loversIterator+1
             },() => {
-                this.cupidDoingHisJob(insertNewFailedLoveParams);
             });
         }
         
@@ -166,6 +182,11 @@ export default class UserPicker extends React.Component{
             <label htmlFor="" className="loading-div-dots dot-3">.</label></div>
         </section>);
         }
+        else if(this.state.outOfUsers == true){
+            return(<section className="user-picker-container">
+                <div className="no-users">Niestety aktualnie nie mamy nikogo w twoim typie. Sprawdź później 🧡</div>
+        </section>);
+        }
         else if(typeof(this.state.loversData) === "object" && this.state.loversData !==null){
             return(<section className="user-picker-container">
             <div className="photo-section" style={{
@@ -180,6 +201,7 @@ export default class UserPicker extends React.Component{
                 <header className="name-and-age">
                     {this.state.loversData === null ? "": this.state.loversData[this.state.loversIterator]["username"]+","+this.state.loversData[this.state.loversIterator]["age"]}
                 </header>
+                <div className="describe-container">{this.state.loversData === null ? "": this.state.loversData[this.state.loversIterator]["describe"]}</div>
                 <div className="pierogi-section">
                     {this.state.pierogiRepresentative}
                     {this.state.pierogiList === null ? "" : this.prepareForeignPierogiStaff(this.state.loversData[this.state.loversIterator]["pierogiExtended"])}

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\findSomebodyToLove;
 use Carbon\Carbon;
 
@@ -51,8 +52,11 @@ class UserActivities extends Controller
         }
     }
     function editPanel(){
+        if(!session()->get("signed_in")){
+            return redirect("/");
+        }
         $getUserId = DB::table("users_primary_data")->where("email","=",session()->get("signed_in"))->value("id");
-        $moreAccurateData = DB::select("SELECT name,surname,age,sex,liveIn,pierogiClassic,pierogiPersonal FROM users_ids WHERE primaryId = $getUserId");
+        $moreAccurateData = DB::select("SELECT name,surname,age,sex,liveIn,pierogiClassic,pierogiPersonal,profileDesc as currentDesc FROM users_ids WHERE primaryId = $getUserId");
         $moreAccurateData = json_decode(json_encode($moreAccurateData),true);
         return view("user")->with("directive",[1,$moreAccurateData]);
     }
@@ -79,6 +83,12 @@ class UserActivities extends Controller
             else{
                 return redirect("user");
             }
+            $desc = null;
+            if($data->has("userDesc")){
+                $desc = $data->input("userDesc");
+                $desc = substr($desc,0,100);
+                $desc = htmlentities($desc,ENT_QUOTES,"UTF-8");
+            }
             $name = htmlentities($name,ENT_QUOTES,"UTF-8");
             $livingPlace = htmlentities($livingPlace,ENT_QUOTES,"UTF-8");
             $surname = null;
@@ -101,7 +111,8 @@ class UserActivities extends Controller
                 "liveIn" => $livingPlace,
                 "pierogiClassic" => $checkWhichClassicOption,
                 "pierogiPersonal" => $pierogiPersonalType,
-                "lastActive" => $now
+                "lastActive" => $now,
+                "profileDesc" => $desc
             ];
             if($data->hasFile("profilePhoto")){
                 $file_data = $data->file("profilePhoto");
@@ -158,7 +169,12 @@ class UserActivities extends Controller
                     $checkIfThisMatchExists = DB::table("users_matches")->where("matchedId","=",$getTheUserId)->where("matcherId","=",$id);
                     if($checkIfThisMatchExists->count() != 0){
                         $currentStatus = $checkIfThisMatchExists->value("status");
-                        if($currentStatus == -1){
+                        if($currentStatus == -1 || $status == -1){
+                            if($status == -1){
+                                DB::table("users_matches")->where("id","=",$rowId)->update([
+                                    "status" => -1
+                                ]);
+                            }
                             return json_encode("failedLove");
                         }
                         else{
@@ -170,26 +186,46 @@ class UserActivities extends Controller
                         }
                     }
                     else{
-                        if($status == -1){
-                            DB::table("users_matches")->insert([
-                                "matcherId" => $getTheUserId,
-                                "matchedId" => $id,
-                                "status" => -1
-                            ]);
+                        $checkIfThisMatchExists = DB::table("users_matches")->where("matchedId","=",$id)->where("matcherId","=",$getTheUserId);
+                        if($checkIfThisMatchExists->count() != 0){
+                            $currentStatus = $checkIfThisMatchExists->value("status");
+                            if($currentStatus == -1 || $status == -1){
+                                if($status == -1){
+                                    DB::table("users_matches")->where("id","=",$rowId)->update([
+                                        "status" => -1
+                                    ]);
+                                }
+                                return json_encode("failedLove");
+                            }
+                            else{
+                                $rowId = $checkIfThisMatchExists->value("id");
+                                DB::table("users_matches")->where("id","=",$rowId)->update([
+                                    "status" => 1
+                                ]);
+                                return json_encode("loversAreOnTheWay");
+                            }
                         }
                         else{
-                            DB::table("users_matches")->insert([
-                                "matcherId" => $getTheUserId,
-                                "matchedId" => $id,
-                                "status" => 0
-                            ]);
+                            if($status == -1){
+                                DB::table("users_matches")->insert([
+                                    "matcherId" => $getTheUserId,
+                                    "matchedId" => $id,
+                                    "status" => -1
+                                ]);
+                            }
+                            else{
+                                DB::table("users_matches")->insert([
+                                    "matcherId" => $getTheUserId,
+                                    "matchedId" => $id,
+                                    "status" => 0
+                                ]);
+                            }
+                            return json_encode("firstMoveDone");
                         }
-                        return json_encode("firstMoveDone");
                         
                     }
                 }
             } catch (\Illuminate\Database\QueryException $e) {
-                report($e);
                 return json_encode("lost connection".$e->getMessage());
             }
         }
@@ -230,6 +266,8 @@ class UserActivities extends Controller
     function logout(){
         session()->forget("signed_in");
         session()->forget("mode");
+        Cookie::queue(Cookie::forget("signed_in"));
+        Cookie::queue(Cookie::forget("mode"));
         return redirect("/");
     }
 }
