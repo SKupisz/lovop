@@ -63,7 +63,7 @@ export default class SendingForm extends React.Component{
     }
 }
 
-if(document.getElementById("chat-form-wrapper")){
+/*if(document.getElementById("chat-form-wrapper")){
     const props = Object.assign({},document.getElementById("chat-form-wrapper").dataset);
     ReactDOM.render(<SendingForm {...props} />,document.getElementById("chat-form-wrapper"));
-}
+}*/

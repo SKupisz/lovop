@@ -66581,6 +66581,8 @@ __webpack_require__(/*! ./components/chat/SendingForm */ "./resources/js/compone
 
 __webpack_require__(/*! ./components/chat/ReadingTheData */ "./resources/js/components/chat/ReadingTheData.jsx");
 
+__webpack_require__(/*! ./components/chat/Chat */ "./resources/js/components/chat/Chat.jsx");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -67348,6 +67350,638 @@ if (document.getElementById("user-picker-wrapper")) {
 
 /***/ }),
 
+/***/ "./resources/js/components/chat/Chat.jsx":
+/*!***********************************************!*\
+  !*** ./resources/js/components/chat/Chat.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatOptions; });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _ReadingTheData_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ReadingTheData.jsx */ "./resources/js/components/chat/ReadingTheData.jsx");
+/* harmony import */ var _SendingForm_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SendingForm.jsx */ "./resources/js/components/chat/SendingForm.jsx");
+/* harmony import */ var _ChatOptions_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatOptions.jsx */ "./resources/js/components/chat/ChatOptions.jsx");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_6__);
+
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+var ChatOptions = /*#__PURE__*/function (_React$Component) {
+  _inherits(ChatOptions, _React$Component);
+
+  var _super = _createSuper(ChatOptions);
+
+  function ChatOptions(props) {
+    var _this;
+
+    _classCallCheck(this, ChatOptions);
+
+    _this = _super.call(this, props);
+    _this.showing = 0;
+    _this.previousClass = "";
+    _this.convBackgroundRoute = "/user/chatSupport/modifyChatBackground";
+    _this.messBackgroundRoute = "/user/chatSupport/modifyMessBackground";
+    _this.messColorRoute = "/user/chatSupport/modifyMessColor";
+    _this.resetRoute = "/user/chatSupport/resetAll";
+    _this.currentStageOfOptions = 0; // 0 - not opened, 1 - menu opened, 2 - specific kind of options opened
+
+    _this.mainContentRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.optionsRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.historyRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.writingRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.optionsWrapperRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.codesRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.codesContainerRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.graphicsContainerRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.backgroundColorRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.messBackgroundRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.messColorRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.OpenTheOptions = _this.OpenTheOptions.bind(_assertThisInitialized(_this));
+    _this.runSecondStage = _this.runSecondStage.bind(_assertThisInitialized(_this));
+    _this.playCode = _this.playCode.bind(_assertThisInitialized(_this));
+    _this.sendSpecialMessage = _this.sendSpecialMessage.bind(_assertThisInitialized(_this));
+    _this.takeTheShot = _this.takeTheShot.bind(_assertThisInitialized(_this));
+    _this.resetCodes = _this.resetCodes.bind(_assertThisInitialized(_this));
+    _this.fallBack = _this.fallBack.bind(_assertThisInitialized(_this));
+    _this.openSubSection = _this.openSubSection.bind(_assertThisInitialized(_this));
+    _this.changeBackground = _this.changeBackground.bind(_assertThisInitialized(_this));
+    _this.readTheGraphicData = _this.readTheGraphicData.bind(_assertThisInitialized(_this));
+    _this.resetGraphics = _this.resetGraphics.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ChatOptions, [{
+    key: "OpenTheOptions",
+    value: function OpenTheOptions() {
+      if (this.showing == 0) {
+        this.mainContentRef.current.classList.remove("hidden");
+        this.historyRef.current.classList.add("hidden");
+        this.writingRef.current.classList.add("hidden");
+        this.currentStageOfOptions = 1;
+        this.showing = 1;
+      } else {
+        this.mainContentRef.current.classList.add("hidden");
+        this.historyRef.current.classList.remove("hidden");
+        this.writingRef.current.classList.remove("hidden");
+        this.showing = 0;
+        this.currentStageOfOptions = 1;
+      }
+    }
+  }, {
+    key: "runSecondStage",
+    value: function runSecondStage(stageCase) {
+      if (stageCase === "codes") {
+        this.optionsWrapperRef.current.classList.add("hidden");
+        this.codesContainerRef.current.classList.remove("hidden");
+        this.currentStageOfOptions = 2;
+      } else if (stageCase === "graphics") {
+        this.optionsWrapperRef.current.classList.add("hidden");
+        this.graphicsContainerRef.current.classList.remove("hidden");
+        this.currentStageOfOptions = 2;
+      }
+    }
+  }, {
+    key: "takeTheShot",
+    value: function () {
+      var _takeTheShot = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(route, params) {
+        var databack;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return fetch(route, params).then(function (back) {
+                  return back.json();
+                }).then(function (data) {});
+
+              case 2:
+                databack = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function takeTheShot(_x, _x2) {
+        return _takeTheShot.apply(this, arguments);
+      }
+
+      return takeTheShot;
+    }()
+  }, {
+    key: "sendSpecialMessage",
+    value: function sendSpecialMessage(contentToGo) {
+      var messageParams = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          content: contentToGo,
+          emailToWriteWith: this.props.email,
+          _token: this.props.sendingtoken
+        })
+      };
+      this.takeTheShot("/user/chat/sendTheMessage", messageParams);
+    }
+  }, {
+    key: "resetCodes",
+    value: function resetCodes() {
+      this.codesContainerRef.current.classList.add("hidden");
+      this.optionsWrapperRef.current.classList.remove("hidden");
+      this.mainContentRef.current.classList.add("hidden");
+      this.historyRef.current.classList.remove("hidden");
+      this.writingRef.current.classList.remove("hidden");
+    }
+  }, {
+    key: "playCode",
+    value: function playCode(codeID) {
+      switch (codeID) {
+        case 1:
+          // heart's minigame
+          this.sendSpecialMessage("##hearts");
+          this.resetCodes();
+          break;
+
+        case 2:
+          this.sendSpecialMessage("##catcher");
+          this.resetCodes();
+          break;
+
+        default:
+          break;
+      }
+    }
+  }, {
+    key: "fallBack",
+    value: function fallBack() {
+      this.currentStageOfOptions--;
+
+      if (this.currentStageOfOptions == 1) {
+        this.optionsWrapperRef.current.classList.remove("hidden");
+        this.codesContainerRef.current.classList.add("hidden");
+        this.graphicsContainerRef.current.classList.add("hidden");
+      } else {
+        this.OpenTheOptions();
+      }
+    }
+  }, {
+    key: "openSubSection",
+    value: function openSubSection(refToOpen) {
+      if (refToOpen.current.classList.contains("hidden")) refToOpen.current.classList.remove("hidden");else refToOpen.current.classList.add("hidden");
+    }
+  }, {
+    key: "readTheGraphicData",
+    value: function () {
+      var _readTheGraphicData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this2 = this;
+
+        var getTheData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                getTheData = fetch("/user/chatSupport/getTheGraphicsData/", {
+                  method: "GET",
+                  headers: {
+                    "Content-type": "application/json"
+                  }
+                }).then(function (back) {
+                  return back.json();
+                }).then(function (data) {
+                  if (_this2.previousClass != "") {
+                    _this2.mainContentRef.current.classList.remove(_this2.previousClass);
+
+                    _this2.historyRef.current.classList.remove(_this2.previousClass);
+                  }
+
+                  if (data[0].background != "default") {
+                    _this2.previousClass = data[0].background;
+
+                    _this2.mainContentRef.current.classList.add(_this2.previousClass);
+
+                    _this2.historyRef.current.classList.add(_this2.previousClass);
+                  } else {
+                    _this2.previousClass = "";
+                  }
+                });
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function readTheGraphicData() {
+        return _readTheGraphicData.apply(this, arguments);
+      }
+
+      return readTheGraphicData;
+    }()
+  }, {
+    key: "changeBackground",
+    value: function changeBackground(route, mode, course) {
+      var _this3 = this;
+
+      var params = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          newbackground: mode,
+          whatToUpdate: course,
+          _token: this.props.sendingtoken
+        })
+      };
+      this.takeTheShot(route, params).then(function () {
+        _this3.readTheGraphicData();
+      });
+    }
+  }, {
+    key: "resetGraphics",
+    value: function resetGraphics(route) {
+      var _this4 = this;
+
+      var params = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          _token: this.props.sendingtoken
+        })
+      };
+      this.takeTheShot(route, params).then(function () {
+        _this4.readTheGraphicData();
+      });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.readTheGraphicData();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this5 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
+        "class": "chat-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "chat-options",
+        className: "chat-options"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "options-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "hamburger",
+        onClick: function onClick() {
+          _this5.OpenTheOptions();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "hamburger-hor"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "hamburger-hor"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "hamburger-hor"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
+        className: "options-main-content hidden",
+        ref: this.mainContentRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "fall-back",
+        onClick: function onClick() {
+          _this5.fallBack();
+        }
+      }, "\u2B05"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "content-wrapper",
+        ref: this.optionsWrapperRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        ref: this.codesRef,
+        onClick: function onClick() {
+          _this5.runSecondStage("codes");
+        }
+      }, "Kody"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        ref: this.codesRef,
+        onClick: function onClick() {
+          _this5.runSecondStage("graphics");
+        }
+      }, "Grafika")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "codes-wrapper hidden",
+        ref: this.codesContainerRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        onClick: function onClick() {
+          _this5.playCode(1);
+        }
+      }, "Heart Game")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "graphics-wrapper hidden",
+        ref: this.graphicsContainerRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        onClick: function onClick() {
+          _this5.resetGraphics(_this5.resetRoute);
+        }
+      }, "Reset do ustawie\u0144 fabrycznych"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        onClick: function onClick() {
+          _this5.openSubSection(_this5.backgroundColorRef);
+        }
+      }, "T\u0142o konwersacji"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-options hidden",
+        ref: this.backgroundColorRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div red",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "red", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div green",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "green", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div blue",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "blue", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div white",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "white", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div gray",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "gray", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div purple",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "purple", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div cyan",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "cyan", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div magenta",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "magenta", "back");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-reset",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.convBackgroundRoute, "default", "back");
+        }
+      }, "Ustawienia fabryczne")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        onClick: function onClick() {
+          _this5.openSubSection(_this5.messBackgroundRef);
+        }
+      }, "T\u0142o wiadomo\u015Bci"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-options hidden",
+        ref: this.messBackgroundRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div red",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "red", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div green",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "green", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div blue",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "blue", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div white",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "white", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div gray",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "gray", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div purple",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "purple", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div cyan",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "cyan", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div magenta",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "magenta", "mess");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-reset",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messBackgroundRoute, "default", "mess");
+        }
+      }, "Ustawienia fabryczne")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "option-codes",
+        onClick: function onClick() {
+          _this5.openSubSection(_this5.messColorRef);
+        }
+      }, "Kolor czcionki"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-options hidden",
+        ref: this.messColorRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div red",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "red", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div green",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "green", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div blue",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "blue", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div white",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "white", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div gray",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "gray", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div purple",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "purple", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div cyan",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "cyan", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-div magenta",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "magenta", "color");
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "color-reset",
+        onClick: function onClick() {
+          _this5.changeBackground(_this5.messColorRoute, "default", "color");
+        }
+      }, "Ustawienia fabryczne")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "chat-history-wrapper",
+        className: "chat-history",
+        ref: this.historyRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_ReadingTheData_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        email: this.props.email,
+        sendingtoken: this.props.sendingtoken
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        id: "chat-form-wrapper",
+        ref: this.writingRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_SendingForm_jsx__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        email: this.props.email,
+        sendingtoken: this.props.sendingtoken
+      })));
+    }
+  }]);
+
+  return ChatOptions;
+}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+
+
+
+if (document.getElementById("chat-container-div")) {
+  var props = Object.assign({}, document.getElementById("chat-container-div").dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ChatOptions, props), document.getElementById("chat-container-div"));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/chat/ChatOptions.jsx":
+/*!******************************************************!*\
+  !*** ./resources/js/components/chat/ChatOptions.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ChatOptionsWrapper; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var ChatOptionsWrapper = /*#__PURE__*/function (_React$Component) {
+  _inherits(ChatOptionsWrapper, _React$Component);
+
+  var _super = _createSuper(ChatOptionsWrapper);
+
+  function ChatOptionsWrapper(props) {
+    _classCallCheck(this, ChatOptionsWrapper);
+
+    return _super.call(this, props);
+  }
+
+  _createClass(ChatOptionsWrapper, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "content-wrapper"
+      });
+    }
+  }]);
+
+  return ChatOptionsWrapper;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/chat/ReadingTheData.jsx":
 /*!*********************************************************!*\
   !*** ./resources/js/components/chat/ReadingTheData.jsx ***!
@@ -67407,11 +68041,19 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      dataToDisplay: null
+      dataToDisplay: null,
+      heartCounter: 0,
+      isHeartOn: false
     };
     _this.getTheData = _this.getTheData.bind(_assertThisInitialized(_this));
     _this.prepareNotResultDiv = _this.prepareNotResultDiv.bind(_assertThisInitialized(_this));
+    _this.renderTheClickHeart = _this.renderTheClickHeart.bind(_assertThisInitialized(_this));
+    _this.renderCatchingGame = _this.renderCatchingGame.bind(_assertThisInitialized(_this));
+    _this.takeTheLoveShot = _this.takeTheLoveShot.bind(_assertThisInitialized(_this));
+    _this.takeTheShot = _this.takeTheShot.bind(_assertThisInitialized(_this));
     _this.historyRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.heartRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+    _this.heartContainerRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
     return _this;
   }
 
@@ -67427,18 +68069,52 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
     value: function processData(response) {
       var endingContent = [],
           currentData = null;
+      var graphicData = response[0],
+          additional_classes = "";
 
-      for (var i = 0; i < response.length; i++) {
+      if (graphicData.message != "default") {
+        additional_classes += graphicData.message + " ";
+      }
+
+      if (graphicData.color != "default") {
+        additional_classes += "color-" + graphicData.color + " ";
+      }
+
+      for (var i = 1; i < response.length; i++) {
         currentData = response[i];
 
-        if (currentData.fromm == "you") {
-          endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-            className: "message-div your-div"
-          }, currentData.content));
+        if (currentData.sender == "you") {
+          if (currentData.messageContent === "##hearts") {
+            endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+              className: "message-div your-div " + additional_classes
+            }, "\uD83E\uDDE1"));
+          } else {
+            endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+              className: "message-div your-div " + additional_classes
+            }, currentData.messageContent));
+          }
         } else {
-          endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-            className: "message-div other-div"
-          }, currentData.content));
+          if (currentData.messageContent === "##hearts") {
+            endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+              className: "message-div other-div " + additional_classes
+            }, "\uD83E\uDDE1"));
+
+            if (i == response.length - 1) {
+              endingContent = this.renderTheClickHeart(endingContent);
+            }
+          } else if (currentData.messageContent === "##catcher") {
+            endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+              className: "message-div other-div " + additional_classes
+            }, "\uD83E\uDD5F"));
+
+            if (i == response.length - 1) {
+              this.renderCatchingGame();
+            }
+          } else {
+            endingContent.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+              className: "message-div other-div " + additional_classes
+            }, currentData.messageContent));
+          }
         }
       }
 
@@ -67447,17 +68123,120 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
       }, endingContent);
     }
   }, {
-    key: "getTheData",
+    key: "takeTheShot",
     value: function () {
-      var _getTheData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _this2 = this;
-
-        var getTheData;
+      var _takeTheShot = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(params) {
+        var databack;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
+                return fetch("/user/chat/sendTheMessage", params).then(function (back) {
+                  return back.json();
+                }).then(function (data) {
+                  console.log(JSON.stringify(data));
+                });
+
+              case 2:
+                databack = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function takeTheShot(_x) {
+        return _takeTheShot.apply(this, arguments);
+      }
+
+      return takeTheShot;
+    }()
+  }, {
+    key: "takeTheLoveShot",
+    value: function takeTheLoveShot() {
+      var messageParams = {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+          content: "Kliknięcia serduszka: " + this.state.heartCounter,
+          emailToWriteWith: this.props.email,
+          _token: this.props.sendingtoken
+        })
+      };
+      this.takeTheShot(messageParams);
+    }
+  }, {
+    key: "renderTheClickHeart",
+    value: function renderTheClickHeart(currentList) {
+      var _this2 = this;
+
+      currentList.push( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "message-clickHeartContainer",
+        ref: this.heartContainerRef,
+        onTimeUpdate: function onTimeUpdate() {
+          _this2.heartContainerRef.style.visibility == "hidden" ? _this2.takeTheLoveShot() : "";
+        },
+        onClick: function onClick() {
+          _this2.setState({
+            heartCounter: _this2.state.heartCounter + 1
+          }, function () {
+            _this2.heartRef.current.innerHTML = _this2.state.heartCounter;
+          });
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "message-clickHeart"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "main-heart-content"
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+        className: "times-label",
+        ref: this.heartRef
+      }, this.state.heartCounter)));
+      this.setState({
+        isHeartOn: true
+      }, function () {});
+
+      if (this.state.isHeartOn == true) {
+        setTimeout(function () {
+          _this2.takeTheLoveShot();
+        }, 12000);
+      }
+
+      return currentList;
+    }
+  }, {
+    key: "renderCatchingGame",
+    value: function renderCatchingGame() {
+      setTimeout(function () {}, 500);
+      /*
+                      <div className="dumpling-item dump-1">🥟</div>
+              <div className="dumpling-item dump-2">🥟</div>
+              <div className="dumpling-item dump-3">🥟</div>
+              <div className="dumpling-item dump-4">🥟</div>
+              <div className="dumpling-item dump-5">🥟</div>
+              <div className="dumpling-item dump-6">🥟</div>
+              <div className="dumpling-item dump-7">🥟</div>
+              <div className="dumpling-item dump-8">🥟</div>
+              <div className="dumpling-item dump-9">🥟</div>
+      */
+    }
+  }, {
+    key: "getTheData",
+    value: function () {
+      var _getTheData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this3 = this;
+
+        var getTheData;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
                 return fetch("/user/getConvData/" + this.props.email, {
                   method: "GET",
                   headers: {
@@ -67467,34 +68246,40 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
                   return back.json();
                 }).then(function (data) {
                   if (data == "no database") {
-                    _this2.setState({
-                      dataToDisplay: _this2.prepareNotResultDiv("Napisz wiadomość, by rozpocząć konwersację")
+                    _this3.setState({
+                      dataToDisplay: _this3.prepareNotResultDiv("Napisz wiadomość, by rozpocząć konwersację")
                     }, function () {});
                   } else if (data == "database error" || data == "no user found") {
-                    _this2.setState({
-                      dataToDisplay: _this2.prepareNotResultDiv("Nie można nawiązać kontaktu. Spróbuj później")
+                    _this3.setState({
+                      dataToDisplay: _this3.prepareNotResultDiv("Nie można nawiązać kontaktu. Spróbuj później")
                     }, function () {});
                   } else {
-                    _this2.setState({
-                      dataToDisplay: _this2.processData(data)
-                    }, function () {
-                      _this2.historyRef.current.scrollTop = _this2.historyRef.current.scrollHeight;
+                    if (JSON.stringify(data) != _this3.currentStringifyResponse) {
+                      _this3.setState({
+                        dataToDisplay: _this3.processData(data)
+                      }, function () {
+                        _this3.currentStringifyResponse = JSON.stringify(data);
+                        setTimeout(function () {
+                          this.getTheData();
+                        }.bind(_this3), 100);
+                      });
+                    } else {
                       setTimeout(function () {
                         this.getTheData();
-                      }.bind(_this2), 100);
-                    });
+                      }.bind(_this3), 100);
+                    }
                   }
                 });
 
               case 2:
-                getTheData = _context.sent;
+                getTheData = _context2.sent;
 
               case 3:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this);
+        }, _callee2, this);
       }));
 
       function getTheData() {
@@ -67509,6 +68294,11 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
       this.getTheData();
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.historyRef.current.scrollIntoView(false);
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
@@ -67520,13 +68310,14 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
 
   return ReadingTheData;
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+/*
+if(document.getElementById("chat-history-wrapper")){
+    const props = Object.assign({},document.getElementById("chat-history-wrapper").dataset);
+    ReactDOM.render(<ReadingTheData {...props}/>, document.getElementById("chat-history-wrapper"));
+}*/
 
 
 
-if (document.getElementById("chat-history-wrapper")) {
-  var props = Object.assign({}, document.getElementById("chat-history-wrapper").dataset);
-  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(ReadingTheData, props), document.getElementById("chat-history-wrapper"));
-}
 
 /***/ }),
 
@@ -67701,13 +68492,13 @@ var SendingForm = /*#__PURE__*/function (_React$Component) {
 
   return SendingForm;
 }(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
+/*if(document.getElementById("chat-form-wrapper")){
+    const props = Object.assign({},document.getElementById("chat-form-wrapper").dataset);
+    ReactDOM.render(<SendingForm {...props} />,document.getElementById("chat-form-wrapper"));
+}*/
 
 
 
-if (document.getElementById("chat-form-wrapper")) {
-  var props = Object.assign({}, document.getElementById("chat-form-wrapper").dataset);
-  react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(SendingForm, props), document.getElementById("chat-form-wrapper"));
-}
 
 /***/ }),
 

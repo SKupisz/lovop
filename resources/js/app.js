@@ -23,3 +23,4 @@ require("./components/UserPicker");
 
 require("./components/chat/SendingForm");
 require("./components/chat/ReadingTheData");
+require("./components/chat/Chat");

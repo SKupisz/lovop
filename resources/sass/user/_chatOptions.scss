@@ -1,0 +1,126 @@
+.chat-container{
+    .hidden{
+        display: none !important;
+    }
+    .options-container{
+        width: calc(95% - 10px);
+        padding: 5px 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        .hamburger{
+            width: 32px;
+            height: 24px;
+            border: 3px solid white;
+            display: block;
+            margin: 0px;
+            margin-left: auto;
+            margin-right: 10px;
+            padding: 0;
+            cursor: pointer;
+            .hamburger-hor{
+                width: 24px;
+                height: 2px;
+                background: white;
+                display: block;
+                margin: 2px auto;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+        .options-main-content{
+            width: calc(100% - 20px);
+            padding: 10px;
+            height: 70vh;
+            z-index: 2;
+            position: relative;
+            background: rgba(255,255,255,.8);
+            border-radius: 10px;
+            margin-top: 1vh;
+            margin-left: auto;
+            margin-right: auto;
+            overflow-y: scroll;
+            .fall-back{
+                border: 2px solid white;
+                color: white;
+                font-family: "Oswald",sans-serif;
+                font-size: 25px;
+                display: block;
+                margin-left: auto;
+                margin-right: 10px;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.4s;
+            }
+            .fall-back:hover{
+                background: rgba(255,255,255,.8);
+            }
+            .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                width: calc(95% - 20px);
+                padding: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 5px;
+                .option-codes{
+                    width: calc(90% - 10px);
+                    padding: 5px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 5px;
+                    border-radius: 10px;
+                    background: white;
+                    font-size: 1.9em;
+                    font-family: "Bebas Neue",sans-serif;
+                    cursor: pointer;
+                    transition: filter 0.4s;
+                }
+                .option-codes:hover{
+                    filter: brightness(70%);
+                }
+                .color-options{
+                    width: calc(80% - 20px);
+                    padding: 10px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    font-family: "Bebas Neue",sans-serif;
+                    text-align: center;
+                    .color-div{
+                        width: calc(23% - 10px);
+                        padding: 10px;
+                        height: 40px;
+                        border-radius: 10px;
+                        display: inline-block;
+                        margin: 5px;
+                        cursor: pointer;
+                        transition: filter 0.4s;
+                        box-shadow: 1px 1px 10px #eee;
+                    }
+                    .color-div:hover{
+                        filter: sepia(100%);
+                    }
+                    .color-reset{
+                        width: calc(80% - 20px);
+                        padding: 10px;
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                        font-size: 1.4em;
+                        background: white;
+                        cursor: pointer;
+                        transition: filter 0.4s;
+                        border-radius: 10px;
+                    }
+                    .color-reset:hover{
+                        filter: brightness(70%);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -139,6 +139,12 @@ class UserActivities extends Controller
                         "file" => $dataForInsert["profilePhoto"]
                     ]);*/
                 }
+                DB::table("users_chat_options")->insert([
+                    "primaryId" => $dataForInsert["primaryId"],
+                    "convBackground" => "default",
+                    "messBackground" => "default",
+                    "messColor" => "default"
+                ]);
                 return redirect("user");
             } catch (\Illuminate\Database\QueryException $e) {
                 report($e);
