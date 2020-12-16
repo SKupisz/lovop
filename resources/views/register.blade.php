@@ -16,9 +16,19 @@
             <span class="error">{{Session::get("errorPackage")["errorMessage"]}}</span>
         </div>
         @else
-        <input type="email" name="new-email" id="" placeholder="Email" class="register-input" required/>
-        <input type="password" name="new-passwd" id="" placeholder="Hasło" class="register-input" required/>
-        <input type="password" name="new-passwd-rep" id="" placeholder="Powtórz hasło" class="register-input" required/>
+        <div class="input-container">
+            <input type="email" name="new-email" id="signin-email-input" placeholder="Email" class="register-input" required/>
+            <button type="button" class="register-reset-btn" onClick = "getElementById('signin-email-input').value = ''">↺</button>
+        </div>
+        <div class="input-container">
+            <input type="password" name="new-passwd" id="signin-passwd-input" placeholder="Hasło" class="register-input" required/>
+            <button type="button" class="register-reset-btn" onClick = "getElementById('signin-passwd-input').value = ''">↺</button>
+        </div>
+        <div class="input-container">
+            <input type="password" name="new-passwd-rep" id="signin-passwdrep-input" placeholder="Powtórz hasło" class="register-input" required/>
+            <button type="button" class="register-reset-btn" onClick = "getElementById('signin-passwdrep-input').value = ''">↺</button>
+        </div>
+        
         @endif
 
         <input name="_token" type="hidden" value="{{ csrf_token() }}"/>

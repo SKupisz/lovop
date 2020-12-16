@@ -150,12 +150,32 @@
             border-radius: 20px;
             width: calc(1.9em + 10px);
             transition: filter 0.4s;
+            margin-bottom: 5px;
         }
         .chat-form-submit:hover{
             filter: brightness(150%);
         }
         .chat-form-submit:focus{
             outline: none;
+        }
+    }
+}
+@media screen and (max-width: 1054px){
+    .chat-container{
+        .chat-form{
+            width: calc(100% - 20px);
+        }
+    }
+}
+@media screen and (max-width: 941px){
+    .chat-container{
+        .chat-form{
+            .chat-form-input,.chat-form-submit{
+                font-size: 1.5em;
+            }
+            .chat-form-submit{
+                width: calc(1.5em + 10px);
+            }
         }
     }
 }
@@ -172,13 +192,23 @@
         }
         .chat-form{
             .chat-form-input,.chat-form-submit{
-                font-size: 1.5em;
+                font-size: 1.2em;
             }
             .chat-form-input{
-                width: calc(80% - 10px);
+                width: calc(70% - 10px);
             }
             .chat-form-submit{
-                width: calc(1.5em + 10px);
+                font-size: 1.3em;
+                width: calc(1.2em + 20px);
+            }
+        }
+    }
+}
+@media screen and (max-width: 544px){
+    .chat-container{
+        .chat-form{
+            .chat-form-submit{
+                width: fit-content;
             }
         }
     }
@@ -191,7 +221,7 @@
         }
     }
 }
-@media screen and (max-width: 376px){
+@media screen and (max-width: 417px){
     .chat-container{
         width: calc(100% - 20px);
         .chat-form{
@@ -205,7 +235,7 @@
         }
     }
 }
-@media screen and (max-width: 290px){
+@media screen and (max-width: 353px){
     .chat-container{
         width: calc(100% - 20px);
         height: 83vh;

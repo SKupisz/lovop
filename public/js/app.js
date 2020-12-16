@@ -67728,7 +67728,7 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
         onClick: function onClick() {
           _this5.resetGraphics(_this5.resetRoute);
         }
-      }, "Reset do ustawie\u0144 fabrycznych"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Ustawienia fabryczne"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
           _this5.openSubSection(_this5.backgroundColorRef);
@@ -68380,12 +68380,20 @@ var SendingForm = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      buttonContent: "💖"
+      buttonContent: "💖",
+      note: null,
+      isListening: false
     };
     _this.inputRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
     _this.changeButtonContent = _this.changeButtonContent.bind(_assertThisInitialized(_this));
     _this.sendTheMessage = _this.sendTheMessage.bind(_assertThisInitialized(_this));
     _this.takeTheShot = _this.takeTheShot.bind(_assertThisInitialized(_this));
+    _this.transcriptTheMessage = _this.transcriptTheMessage.bind(_assertThisInitialized(_this));
+    _this.speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    _this.mic = new _this.speechRecognition();
+    _this.mic.continuous = true;
+    _this.mic.interimResults = true;
+    _this.mic.lang = 'pl-PL';
     return _this;
   }
 
@@ -68464,9 +68472,52 @@ var SendingForm = /*#__PURE__*/function (_React$Component) {
       this.takeTheShot(messageParams);
     }
   }, {
+    key: "transcriptTheMessage",
+    value: function transcriptTheMessage() {
+      var _this2 = this;
+
+      console.log(this.state.isListening);
+
+      if (this.state.isListening == true) {
+        this.mic.start();
+
+        this.mic.onend = function () {
+          console.log('continue..');
+
+          _this2.mic.start();
+        };
+      } else {
+        this.mic.stop();
+
+        this.mic.onend = function () {
+          console.log('Stopped this.mic on Click');
+        };
+      }
+
+      this.mic.onstart = function () {
+        console.log('Mics on');
+      };
+
+      this.mic.onresult = function (event) {
+        var transcript = Array.from(event.results).map(function (result) {
+          return result[0];
+        }).map(function (result) {
+          return result.transcript;
+        }).join(' ');
+        console.log(transcript);
+        _this2.inputRef.current.value = transcript;
+
+        _this2.changeButtonContent();
+
+        _this2.mic.onerror = function (event) {
+          console.log(event.error);
+        };
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "chat-form"
@@ -68478,15 +68529,46 @@ var SendingForm = /*#__PURE__*/function (_React$Component) {
         placeholder: "Napisz co\u015B...",
         className: "chat-form-input",
         onChange: function onChange() {
-          return _this2.changeButtonContent();
+          return _this3.changeButtonContent();
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         type: "button",
         className: "chat-form-submit",
         onClick: function onClick() {
-          _this2.sendTheMessage();
+          _this3.sendTheMessage();
         }
-      }, this.state.buttonContent));
+      }, this.state.buttonContent), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
+        type: "button",
+        className: "chat-form-submit",
+        onMouseDown: function onMouseDown() {
+          _this3.setState({
+            isListening: true
+          }, function () {
+            _this3.transcriptTheMessage();
+          });
+        },
+        onMouseUp: function onMouseUp() {
+          _this3.setState({
+            isListening: false
+          }, function () {
+            _this3.transcriptTheMessage();
+          });
+        },
+        onTouchStart: function onTouchStart() {
+          _this3.setState({
+            isListening: true
+          }, function () {
+            _this3.transcriptTheMessage();
+          });
+        },
+        onTouchEnd: function onTouchEnd() {
+          _this3.setState({
+            isListening: false
+          }, function () {
+            _this3.transcriptTheMessage();
+          });
+        }
+      }, "\uD83C\uDFA4"));
     }
   }]);
 

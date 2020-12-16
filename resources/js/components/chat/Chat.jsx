@@ -191,7 +191,7 @@ export default class ChatOptions extends React.Component{
                         <div className="option-codes" onClick = {() => {this.playCode(1)}}>Heart Game</div>
                     </div>
                     <div className="graphics-wrapper hidden" ref = {this.graphicsContainerRef}>
-                        <div className="option-codes" onClick={()=>{this.resetGraphics(this.resetRoute)}}>Reset do ustawień fabrycznych</div>
+                        <div className="option-codes" onClick={()=>{this.resetGraphics(this.resetRoute)}}>Ustawienia fabryczne</div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.backgroundColorRef)}}>Tło konwersacji</div>
                         <div className="color-options hidden" ref = {this.backgroundColorRef}>
                             <div className="color-div red" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "red", "back")}}></div>

@@ -124,3 +124,130 @@
         }
     }
 }
+@media screen and (max-width: 937px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                    .option-codes{
+                        width: calc(95% - 10px);
+                        font-size: 1.7em;
+                    }
+                    .color-options{
+                        width: calc(90% - 20px);
+                        .color-div{
+                            width: calc(22% - 10px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 650px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .fall-back{
+                    font-size: 20px;
+                    width: 40px;
+                    height: 40px;
+                }
+                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                    .option-codes{
+                        width: calc(100% - 10px);
+                        font-size: 1.5em;
+                    }
+                    .color-options{
+                        .color-reset{
+                            width: calc(90% - 20px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 603px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                    .color-options{
+                        width: calc(100% - 20px);
+                        .color-div{
+                            width: calc(26% - 10px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 442px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                    .option-codes{
+                        width: calc(100% - 10px);
+                        font-size: 1.3em;
+                    }
+                    .color-options{
+                        .color-reset{
+                            width: calc(100% - 20px);
+                            font-size: 1.2em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 375px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                    .color-options{
+                        .color-div{
+                            width: calc(50% - 10px);
+                        }
+                        .color-reset{
+                            font-size: 1em;
+                            width: calc(110% - 20px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 312px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .fall-back{
+                    font-size: 15px;
+                    width: 30px;
+                    height: 30px;
+                }
+                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                    width: calc(100% - 10px);
+                    .option-codes{
+                        font-size: 1.1em;
+                    }
+                    .color-options{
+                        .color-div{
+                            width: calc(50% - 10px);
+                        }
+                        .color-reset{
+                            font-size: 1em;
+                            width: calc(110% - 20px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

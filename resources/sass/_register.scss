@@ -19,10 +19,14 @@
     font-family: "Bebas Neue",sans-serif;
     margin-bottom: 20px;
 }
+.input-container{
+    display: block;
+    text-align: center;
+}
 .register-input{
     width: calc(60% - 20px);
     padding: 10px;
-    display: block;
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
     font-size: 1.4em;
@@ -34,7 +38,24 @@
     margin-bottom: 10px;
     background: rgba(255,255,255,.8);
 }
-.register-input:focus{
+.register-reset-btn{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    font-size: 1.4em;
+    font-family: "Oswald",sans-serif;
+    background: rgba(255,255,255,.8);
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: filter 0.4s;
+}
+.register-reset-btn:hover{
+    filter: brightness(70%);
+}
+.register-input:focus,.register-reset-btn:focus{
     outline-style: none;
 }
 .register-button{
@@ -88,6 +109,11 @@
 @media screen and (max-width: 775px){
     .register-input{
         width: calc(80% - 20px);
+    }
+    .register-reset-btn{
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
     }
 }
 @media screen and (max-width: 390px){

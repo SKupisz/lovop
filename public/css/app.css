@@ -298,10 +298,15 @@ a {
   margin-bottom: 20px;
 }
 
+.input-container {
+  display: block;
+  text-align: center;
+}
+
 .register-input {
   width: calc(60% - 20px);
   padding: 10px;
-  display: block;
+  display: inline-block;
   margin-left: auto;
   margin-right: auto;
   font-size: 1.4em;
@@ -314,7 +319,27 @@ a {
   background: rgba(255, 255, 255, 0.8);
 }
 
-.register-input:focus {
+.register-reset-btn {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  font-size: 1.4em;
+  font-family: "Oswald",sans-serif;
+  background: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: filter 0.4s;
+}
+
+.register-reset-btn:hover {
+  filter: brightness(70%);
+}
+
+.register-input:focus,
+.register-reset-btn:focus {
   outline-style: none;
 }
 
@@ -375,6 +400,12 @@ a {
 @media screen and (max-width: 775px) {
   .register-input {
     width: calc(80% - 20px);
+  }
+
+  .register-reset-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
   }
 }
 
@@ -1414,6 +1445,7 @@ body {
   border-radius: 20px;
   width: calc(1.9em + 10px);
   transition: filter 0.4s;
+  margin-bottom: 5px;
 }
 
 .chat-container .chat-form .chat-form-submit:hover {
@@ -1422,6 +1454,23 @@ body {
 
 .chat-container .chat-form .chat-form-submit:focus {
   outline: none;
+}
+
+@media screen and (max-width: 1054px) {
+  .chat-container .chat-form {
+    width: calc(100% - 20px);
+  }
+}
+
+@media screen and (max-width: 941px) {
+  .chat-container .chat-form .chat-form-input,
+  .chat-container .chat-form .chat-form-submit {
+    font-size: 1.5em;
+  }
+
+  .chat-container .chat-form .chat-form-submit {
+    width: calc(1.5em + 10px);
+  }
 }
 
 @media screen and (max-width: 802px) {
@@ -1441,15 +1490,24 @@ body {
 
   .chat-container .chat-form .chat-form-input,
   .chat-container .chat-form .chat-form-submit {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   .chat-container .chat-form .chat-form-input {
-    width: calc(80% - 10px);
+    width: calc(70% - 10px);
   }
 
   .chat-container .chat-form .chat-form-submit {
-    width: calc(1.5em + 10px);
+    font-size: 1.3em;
+    width: calc(1.2em + 20px);
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .chat-container .chat-form .chat-form-submit {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
   }
 }
 
@@ -1463,7 +1521,7 @@ body {
   }
 }
 
-@media screen and (max-width: 376px) {
+@media screen and (max-width: 417px) {
   .chat-container {
     width: calc(100% - 20px);
   }
@@ -1482,7 +1540,7 @@ body {
   }
 }
 
-@media screen and (max-width: 290px) {
+@media screen and (max-width: 353px) {
   .chat-container {
     width: calc(100% - 20px);
     height: 83vh;
@@ -1675,6 +1733,126 @@ body {
 .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset:hover,
 .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset:hover {
   filter: brightness(70%);
+}
+
+@media screen and (max-width: 937px) {
+  .chat-container .options-container .options-main-content .content-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+    width: calc(95% - 10px);
+    font-size: 1.7em;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options {
+    width: calc(90% - 20px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+    width: calc(22% - 10px);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .chat-container .options-container .options-main-content .fall-back {
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+    width: calc(100% - 10px);
+    font-size: 1.5em;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+    width: calc(90% - 20px);
+  }
+}
+
+@media screen and (max-width: 603px) {
+  .chat-container .options-container .options-main-content .content-wrapper .color-options,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options {
+    width: calc(100% - 20px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+    width: calc(26% - 10px);
+  }
+}
+
+@media screen and (max-width: 442px) {
+  .chat-container .options-container .options-main-content .content-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+    width: calc(100% - 10px);
+    font-size: 1.3em;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+    width: calc(100% - 20px);
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+    width: calc(50% - 10px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+    font-size: 1em;
+    width: calc(110% - 20px);
+  }
+}
+
+@media screen and (max-width: 312px) {
+  .chat-container .options-container .options-main-content .fall-back {
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper,
+  .chat-container .options-container .options-main-content .codes-wrapper,
+  .chat-container .options-container .options-main-content .graphics-wrapper {
+    width: calc(100% - 10px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+    font-size: 1.1em;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+    width: calc(50% - 10px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+    font-size: 1em;
+    width: calc(110% - 20px);
+  }
 }
 
 .chat-container .red {
