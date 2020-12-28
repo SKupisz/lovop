@@ -11,6 +11,10 @@
             <header class="new-user-welcome-header">{{Session::get("signed_in")}}</header>
             @include("userComponents.dataForm")
             @break
+        @case(2)
+            <header class="new-user-welcome-header">{{$directive[1][0]["errorContent"]}}</header>
+            @include("userComponents.dataForm")
+            @break
         @default
             @break
         @endswitch

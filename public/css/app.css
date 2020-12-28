@@ -319,6 +319,14 @@ a {
   background: rgba(255, 255, 255, 0.8);
 }
 
+.input-green {
+  background: lightgreen;
+}
+
+.input-red {
+  background: darkred;
+}
+
 .register-reset-btn {
   display: inline-block;
   height: 50px;
@@ -594,7 +602,8 @@ body {
   opacity: 0;
 }
 
-.data-form-wrapper .pick-up-a-photo {
+.data-form-wrapper .pick-up-a-photo,
+.data-form-wrapper .openPasswdChange {
   padding: 10px 20px;
   border-radius: 10px;
   text-align: center;
@@ -602,6 +611,28 @@ body {
   font-family: "Bebas Neue",sans-serif;
   background: rgba(223, 71, 35, 0.4);
   cursor: pointer;
+}
+
+.data-form-wrapper .openPasswdChange {
+  background: rgba(255, 255, 255, 0.9);
+  margin: 5px 0px;
+  transition: filter 0.4s;
+}
+
+.data-form-wrapper .openPasswdChange:hover {
+  filter: brightness(70%);
+}
+
+.data-form-wrapper .passwds-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  width: calc(90% - 10px);
+}
+
+.data-form-wrapper .hidden {
+  display: none;
 }
 
 .data-form-wrapper .sex-section,

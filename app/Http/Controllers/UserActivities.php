@@ -24,7 +24,8 @@ class UserActivities extends Controller
         $this->findSomebodyToLove = $UserActivities;
     }
     function redirectToTheUser($errorName,$errorData){
-        echo $errorName; // tutaj trzeba dorobić
+        $errorData["errorContent"] = $errorName;
+       return redirect("/user/edit")->with("errorData",$errorData);
     }
     function mainLoop(){
         if(!session()->get("signed_in") && !session()->get("mode")){
@@ -54,6 +55,12 @@ class UserActivities extends Controller
     function editPanel(){
         if(!session()->get("signed_in")){
             return redirect("/");
+        }
+        if(session()->get("errorData")) {
+            $finalData = session()->get("errorData");
+            $finalData["currentDesc"] = $finalData["profileDesc"];
+            unset($finalData["profileDesc"]);
+            return view("user")->with("directive",[2,[$finalData]]);
         }
         $getUserId = DB::table("users_primary_data")->where("email","=",session()->get("signed_in"))->value("id");
         $moreAccurateData = DB::select("SELECT name,surname,age,sex,liveIn,pierogiClassic,pierogiPersonal,profileDesc as currentDesc FROM users_ids WHERE primaryId = $getUserId");
@@ -124,27 +131,48 @@ class UserActivities extends Controller
                 }
             }
             try {
-                $getUserId = DB::table("users_primary_data")->where("email","=",session()->get("signed_in"))->value("id");
-                $dataForInsert["primaryId"] = $getUserId;
-                $searchForTheData = DB::table("users_ids")->where("primaryId","=",$getUserId)->count();
+                $getUserId = DB::table("users_primary_data")->select("id","passwd")->where("email","=",session()->get("signed_in"))->get();
+                $getUserId = json_decode(json_encode($getUserId),true);
+                $getUserId = $getUserId[0];
+                $userId = $getUserId["id"];
+                $dataForInsert["primaryId"] = $userId;
+                if($data->has("old-passwd") && $data->has("new-passwd") && $data->has("new-passwd-rep")){
+                    $passwordsData = [
+                        "old_passwd" => htmlentities($data->input("old-passwd"),ENT_QUOTES,"UTF-8"),
+                        "new_passwd" => htmlentities($data->input("new-passwd"),ENT_QUOTES,"UTF-8"),
+                        "new_rep_passwd" => htmlentities($data->input("new-passwd-rep"),ENT_QUOTES,"UTF-8")];
+                    if($passwordsData["new_passwd"] != $passwordsData["new_rep_passwd"] || !password_verify($passwordsData["old_passwd"],$getUserId["passwd"])){
+                        foreach($passwordsData as $ind => $data){
+                            $dataForInsert[$ind] = $data;
+                        }
+                        if($passwordsData["new_passwd"] != $passwordsData["new_rep_passwd"]) return $this->redirectToTheUser("Nowe hasła nie są identyczne",$dataForInsert);
+                        else return $this->redirectToTheUser("Niepoprawne hasło",$dataForInsert);
+                    }
+                    $passwordsData["new_passwd"] = password_hash($passwordsData["new_passwd"],PASSWORD_DEFAULT);
+                    DB::table("users_primary_data")->where("id","=",$userId)->update([
+                        "passwd" => $passwordsData["new_passwd"]
+                    ]);
+
+                }
+                $searchForTheData = DB::table("users_ids")->where("primaryId","=",$userId)->count();
                 if($searchForTheData == 0){
                     DB::table("users_ids")->insert($dataForInsert);
-                    DB::table("users_primary_data")->where("id","=",$getUserId)->update(["confirmed"=>2]);
+                    DB::table("users_primary_data")->where("id","=",$userId)->update(["confirmed"=>2]);
+                    DB::table("users_chat_options")->insert([
+                        "primaryId" => $dataForInsert["primaryId"],
+                        "convBackground" => "default",
+                        "messBackground" => "default",
+                        "messColor" => "default"
+                    ]);
                     session("mode","2");
                 }
                 else{
                     unset($dataForInsert["primaryId"]);
-                    DB::table("users_ids")->where("primaryId","=",$getUserId)->update($dataForInsert);
+                    DB::table("users_ids")->where("primaryId","=",$userId)->update($dataForInsert);
                     /*DB::table("defaultPics")->where("id","=",2)->update([
                         "file" => $dataForInsert["profilePhoto"]
                     ]);*/
                 }
-                DB::table("users_chat_options")->insert([
-                    "primaryId" => $dataForInsert["primaryId"],
-                    "convBackground" => "default",
-                    "messBackground" => "default",
-                    "messColor" => "default"
-                ]);
                 return redirect("user");
             } catch (\Illuminate\Database\QueryException $e) {
                 report($e);

@@ -16,6 +16,8 @@ require('./components/Example');
 require("./components/Navbar");
 require("./components/About");
 
+require("./components/dataForm/RegisterInputs");
+require("./components/dataForm/DataFormPassword");
 require("./components/dataForm/DataFormCheckboxes");
 require("./components/dataForm/DataFormPierogi");
 require("./components/dataForm/DataFormDescribe");
