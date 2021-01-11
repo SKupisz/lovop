@@ -2,12 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import ReadingTheData from "./ReadingTheData.jsx";
 import SendingForm from "./SendingForm.jsx";
-import ChatOptionsWrapper from "./ChatOptions.jsx";
+import GraphicsSubSection from "./GraphicsSubSection.jsx";
+import FavPierogies from "./FavPierogies.jsx";
+import ChatAdvices from "./ChatAdvices.jsx";
 import { param } from "jquery";
 
 export default class ChatOptions extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            username: "",
+            usersurname: "",
+            age: 0,
+            town: "",
+            description: "",
+            pierogiCode: 0,
+            pierogiStr: ""
+        };
         this.showing = 0;
         this.previousClass = "";
         this.convBackgroundRoute = "/user/chatSupport/modifyChatBackground";
@@ -24,10 +35,15 @@ export default class ChatOptions extends React.Component{
         this.codesRef = React.createRef();
         this.codesContainerRef = React.createRef();
         this.graphicsContainerRef = React.createRef();
+        this.supportContainerRef = React.createRef();
 
         this.backgroundColorRef = React.createRef();
         this.messBackgroundRef = React.createRef();
         this.messColorRef = React.createRef();
+
+        this.generalInfoRef = React.createRef();
+        this.pierogiInfoRef = React.createRef();
+        this.pieceOfAdviceRef = React.createRef();
 
         this.OpenTheOptions = this.OpenTheOptions.bind(this);
         this.runSecondStage = this.runSecondStage.bind(this);
@@ -40,6 +56,8 @@ export default class ChatOptions extends React.Component{
         this.changeBackground = this.changeBackground.bind(this);
         this.readTheGraphicData = this.readTheGraphicData.bind(this);
         this.resetGraphics = this.resetGraphics.bind(this);
+        this.readTheSupportData = this.readTheSupportData.bind(this);
+        this.clickCallback = this.clickCallback.bind(this);
     }
     OpenTheOptions(){
         if(this.showing == 0){
@@ -61,11 +79,19 @@ export default class ChatOptions extends React.Component{
         if(stageCase === "codes"){
             this.optionsWrapperRef.current.classList.add("hidden");
             this.codesContainerRef.current.classList.remove("hidden");
+            this.supportContainerRef.current.classList.add("hidden");
             this.currentStageOfOptions = 2;
         }
         else if(stageCase === "graphics"){
             this.optionsWrapperRef.current.classList.add("hidden");
             this.graphicsContainerRef.current.classList.remove("hidden");
+            this.supportContainerRef.current.classList.add("hidden");
+            this.currentStageOfOptions = 2;
+        }
+        else if(stageCase === "support"){
+            this.optionsWrapperRef.current.classList.add("hidden");
+            this.graphicsContainerRef.current.classList.add("hidden");
+            this.supportContainerRef.current.classList.remove("hidden");
             this.currentStageOfOptions = 2;
         }
     }
@@ -115,6 +141,7 @@ export default class ChatOptions extends React.Component{
             this.optionsWrapperRef.current.classList.remove("hidden");
             this.codesContainerRef.current.classList.add("hidden");
             this.graphicsContainerRef.current.classList.add("hidden");
+            this.supportContainerRef.current.classList.add("hidden");
         }
         else{
             this.OpenTheOptions();
@@ -146,6 +173,27 @@ export default class ChatOptions extends React.Component{
             }
         });
     }
+    async readTheSupportData(){
+        const getTheData = fetch("/user/chatSupport/getTheSupportData/",{
+            method: "POST",
+            headers: {"Content-type":"application/json"},
+            body: JSON.stringify({
+                _token: this.props.sendingtoken,
+                email: this.props.email
+            })
+        }).then(back => back.json())
+        .then(data => {
+            this.setState({
+                username: data[0].username,
+                usersurname: data[0].usersurname,
+                age: data[0].currentUserAge,
+                town: data[0].hometown,
+                description: data[0].userCurrentDesc,
+                pierogiCode: data[0].userStandardPierogies,
+                pierogiStr: data[0].userExtendedPierogies
+            },() => {});
+        })
+    }
     changeBackground(route,mode,course){
         const params = {
             method: "POST",
@@ -168,8 +216,12 @@ export default class ChatOptions extends React.Component{
         };
         this.takeTheShot(route,params).then(() => {this.readTheGraphicData();});
     }
+    clickCallback(){
+        this.readTheGraphicData();
+    }
     componentDidMount(){
         this.readTheGraphicData();
+        this.readTheSupportData();
     }
     render(){
         return(
@@ -186,6 +238,7 @@ export default class ChatOptions extends React.Component{
                     <div className="content-wrapper" ref = {this.optionsWrapperRef}>
                         <div className="option-codes" ref = {this.codesRef} onClick = {() => {this.runSecondStage("codes");}}>Kody</div>
                         <div className="option-codes" ref = {this.codesRef} onClick = {() => {this.runSecondStage("graphics");}}>Grafika</div>
+                        <div className="option-codes" ref = {this.codesRef} onClick = {() => {this.runSecondStage("support");}}>Wsparcie rozmowy</div>
                     </div>
                     <div className="codes-wrapper hidden" ref = {this.codesContainerRef}>
                         <div className="option-codes" onClick = {() => {this.playCode(1)}}>Heart Game</div>
@@ -194,39 +247,32 @@ export default class ChatOptions extends React.Component{
                         <div className="option-codes" onClick={()=>{this.resetGraphics(this.resetRoute)}}>Ustawienia fabryczne</div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.backgroundColorRef)}}>Tło konwersacji</div>
                         <div className="color-options hidden" ref = {this.backgroundColorRef}>
-                            <div className="color-div red" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "red", "back")}}></div>
-                            <div className="color-div green" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "green", "back")}}></div>
-                            <div className="color-div blue" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "blue", "back")}}></div>
-                            <div className="color-div white" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "white", "back")}}></div>
-                            <div className="color-div gray" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "gray", "back")}}></div>
-                            <div className="color-div purple" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "purple", "back")}}></div>
-                            <div className="color-div cyan" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "cyan", "back")}}></div>
-                            <div className="color-div magenta" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "magenta", "back")}}></div>
-                            <div className="color-reset" onClick = {() => {this.changeBackground(this.convBackgroundRoute, "default", "back")}}>Ustawienia fabryczne</div>
+                            <GraphicsSubSection changeRoute = {this.convBackgroundRoute} clickCallback = {this.clickCallback}/>
                         </div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.messBackgroundRef)}}>Tło wiadomości</div>
                         <div className="color-options hidden" ref = {this.messBackgroundRef}>
-                            <div className="color-div red" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "red", "mess")}}></div>
-                            <div className="color-div green" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "green", "mess")}}></div>
-                            <div className="color-div blue" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "blue", "mess")}}></div>
-                            <div className="color-div white" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "white", "mess")}}></div>
-                            <div className="color-div gray" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "gray", "mess")}}></div>
-                            <div className="color-div purple" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "purple", "mess")}}></div>
-                            <div className="color-div cyan" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "cyan", "mess")}}></div>
-                            <div className="color-div magenta" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "magenta", "mess")}}></div>
-                            <div className="color-reset" onClick = {() => {this.changeBackground(this.messBackgroundRoute, "default", "mess")}}>Ustawienia fabryczne</div>
+                            <GraphicsSubSection changeRoute = {this.messBackgroundRoute} clickCallback = {this.clickCallback}/>
                         </div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.messColorRef)}}>Kolor czcionki</div>
                         <div className="color-options hidden" ref = {this.messColorRef}>
-                            <div className="color-div red" onClick = {() => {this.changeBackground(this.messColorRoute, "red", "color")}}></div>
-                            <div className="color-div green" onClick = {() => {this.changeBackground(this.messColorRoute, "green", "color")}}></div>
-                            <div className="color-div blue" onClick = {() => {this.changeBackground(this.messColorRoute, "blue", "color")}}></div>
-                            <div className="color-div white" onClick = {() => {this.changeBackground(this.messColorRoute, "white", "color")}}></div>
-                            <div className="color-div gray" onClick = {() => {this.changeBackground(this.messColorRoute, "gray", "color")}}></div>
-                            <div className="color-div purple" onClick = {() => {this.changeBackground(this.messColorRoute, "purple", "color")}}></div>
-                            <div className="color-div cyan" onClick = {() => {this.changeBackground(this.messColorRoute, "cyan", "color")}}></div>
-                            <div className="color-div magenta" onClick = {() => {this.changeBackground(this.messColorRoute, "magenta", "color")}}></div>
-                            <div className="color-reset" onClick = {() => {this.changeBackground(this.messColorRoute, "default", "color")}}>Ustawienia fabryczne</div>
+                            <GraphicsSubSection changeRoute = {this.messColorRoute} clickCallback = {this.clickCallback}/>
+                        </div>
+                    </div>
+                    <div className="support-wrapper hidden" ref = {this.supportContainerRef}>
+                        <div className="option-codes" onClick = {() => {this.openSubSection(this.generalInfoRef)}}>Informacje ogólne</div>
+                        <div className="color-options hidden" ref = {this.generalInfoRef}>
+                            <div className="support-label">Nazwa: {this.state.username+" "+this.state.usersurname}</div>
+                            <div className="support-label">Wiek: {this.state.age}</div>
+                            <div className="support-label">Miasto: {this.state.town}</div>
+                            <div className="support-label">Opis: {/*this.state.description*/}Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</div>
+                        </div>
+                        <div className="option-codes" onClick = {() => {this.openSubSection(this.pierogiInfoRef)}}>Ulubione pierogi</div>
+                        <div className="color-options hidden" ref = {this.pierogiInfoRef}>
+                            {this.state.pierogiCode == 0 ? "Ładowanie..." : <FavPierogies classic = {this.state.pierogiCode} nonClassic = {this.state.pierogiStr}/>}
+                        </div>
+                        <div className="option-codes" onClick = {() => {this.openSubSection(this.pieceOfAdviceRef)}}>Porady</div>
+                        <div className="color-options hidden" ref = {this.pieceOfAdviceRef}>
+                            <ChatAdvices/>
                         </div>
                     </div>
                 </section>

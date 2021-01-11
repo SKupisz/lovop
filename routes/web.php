@@ -49,6 +49,7 @@ Route::post("/user/chatSupport/modifyMessBackground","LoversChat@changeConvBackg
 Route::post("/user/chatSupport/modifyMessColor","LoversChat@changeConvBackground");
 Route::post("/user/chatSupport/resetAll","LoversChat@resetTheGraphics");
 Route::get("/user/chatSupport/getTheGraphicsData","LoversChat@readTheGraphicsData");
+Route::post("/user/chatSupport/getTheSupportData","LoversChat@readSupportData");
 
 Route::post("/user/loveIsInTheAir","UserActivities@makeAMatch");
 Route::get("/user/support/randSomeNewLover","findSomebodyToLove@getTheListOfLovers");

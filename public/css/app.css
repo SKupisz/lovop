@@ -1681,7 +1681,8 @@ body {
 
 .chat-container .options-container .options-main-content .content-wrapper,
 .chat-container .options-container .options-main-content .codes-wrapper,
-.chat-container .options-container .options-main-content .graphics-wrapper {
+.chat-container .options-container .options-main-content .graphics-wrapper,
+.chat-container .options-container .options-main-content .support-wrapper {
   width: calc(95% - 20px);
   padding: 10px;
   margin-left: auto;
@@ -1691,7 +1692,8 @@ body {
 
 .chat-container .options-container .options-main-content .content-wrapper .option-codes,
 .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
-.chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+.chat-container .options-container .options-main-content .graphics-wrapper .option-codes,
+.chat-container .options-container .options-main-content .support-wrapper .option-codes {
   width: calc(90% - 10px);
   padding: 5px;
   display: block;
@@ -1708,13 +1710,15 @@ body {
 
 .chat-container .options-container .options-main-content .content-wrapper .option-codes:hover,
 .chat-container .options-container .options-main-content .codes-wrapper .option-codes:hover,
-.chat-container .options-container .options-main-content .graphics-wrapper .option-codes:hover {
+.chat-container .options-container .options-main-content .graphics-wrapper .option-codes:hover,
+.chat-container .options-container .options-main-content .support-wrapper .option-codes:hover {
   filter: brightness(70%);
 }
 
 .chat-container .options-container .options-main-content .content-wrapper .color-options,
 .chat-container .options-container .options-main-content .codes-wrapper .color-options,
-.chat-container .options-container .options-main-content .graphics-wrapper .color-options {
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options,
+.chat-container .options-container .options-main-content .support-wrapper .color-options {
   width: calc(80% - 20px);
   padding: 10px;
   display: block;
@@ -1726,7 +1730,8 @@ body {
 
 .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
 .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
-.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .color-div {
   width: calc(23% - 10px);
   padding: 10px;
   height: 40px;
@@ -1740,13 +1745,15 @@ body {
 
 .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div:hover,
 .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div:hover,
-.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div:hover {
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div:hover,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .color-div:hover {
   filter: sepia(100%);
 }
 
 .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
 .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
-.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .color-reset {
   width: calc(80% - 20px);
   padding: 10px;
   display: block;
@@ -1762,28 +1769,108 @@ body {
 
 .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset:hover,
 .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset:hover,
-.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset:hover {
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset:hover,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .color-reset:hover {
   filter: brightness(70%);
+}
+
+.chat-container .options-container .options-main-content .content-wrapper .color-options .support-label,
+.chat-container .options-container .options-main-content .codes-wrapper .color-options .support-label,
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .support-label,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .support-label {
+  width: calc(90% - 20px);
+  padding: 10px 0px;
+  display: block;
+  margin: 2px auto;
+  text-indent: 1em;
+  font-size: 1.2em !important;
+  text-align: left;
+}
+
+.chat-container .options-container .options-main-content .content-wrapper .color-options .pierogi-kind,
+.chat-container .options-container .options-main-content .content-wrapper .color-options .extended-pierogi-subsection,
+.chat-container .options-container .options-main-content .codes-wrapper .color-options .pierogi-kind,
+.chat-container .options-container .options-main-content .codes-wrapper .color-options .extended-pierogi-subsection,
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .pierogi-kind,
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .extended-pierogi-subsection,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .pierogi-kind,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .extended-pierogi-subsection {
+  display: inline-block;
+  width: calc(47% - 20px);
+  padding: 10px;
+  margin: 4px;
+  font-size: 1em;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.chat-container .options-container .options-main-content .content-wrapper .color-options .extended-pierogi-subsection,
+.chat-container .options-container .options-main-content .codes-wrapper .color-options .extended-pierogi-subsection,
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .extended-pierogi-subsection,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .extended-pierogi-subsection {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(90% - 20px);
+}
+
+.chat-container .options-container .options-main-content .content-wrapper .color-options .advice,
+.chat-container .options-container .options-main-content .codes-wrapper .color-options .advice,
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .advice,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .advice {
+  border: 2px solid darkmagenta;
+  border-radius: 10px;
+  width: calc(90% - 20px);
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: 1.2em;
+  font-family: "Oswald",sans-serif;
+}
+
+.chat-container .options-container .options-main-content .content-wrapper .color-options .advice .advice-content,
+.chat-container .options-container .options-main-content .codes-wrapper .color-options .advice .advice-content,
+.chat-container .options-container .options-main-content .graphics-wrapper .color-options .advice .advice-content,
+.chat-container .options-container .options-main-content .support-wrapper .color-options .advice .advice-content {
+  font-weight: 800;
 }
 
 @media screen and (max-width: 937px) {
   .chat-container .options-container .options-main-content .content-wrapper .option-codes,
   .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
-  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .support-wrapper .option-codes {
     width: calc(95% - 10px);
     font-size: 1.7em;
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options {
     width: calc(90% - 20px);
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-div {
     width: calc(22% - 10px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .extended-pierogi-subsection,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .extended-pierogi-subsection,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .extended-pierogi-subsection,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .extended-pierogi-subsection {
+    font-size: 0.9em;
   }
 }
 
@@ -1796,59 +1883,117 @@ body {
 
   .chat-container .options-container .options-main-content .content-wrapper .option-codes,
   .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
-  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .support-wrapper .option-codes {
     width: calc(100% - 10px);
     font-size: 1.5em;
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-reset {
     width: calc(90% - 20px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .support-label,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .support-label,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .support-label,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .support-label {
+    width: calc(100% - 20px);
+    text-indent: 0;
+    font-size: 1.1em !important;
   }
 }
 
 @media screen and (max-width: 603px) {
   .chat-container .options-container .options-main-content .content-wrapper .color-options,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options {
     width: calc(100% - 20px);
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-div {
     width: calc(26% - 10px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .advice,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .advice,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .advice,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .advice {
+    width: calc(100% - 10px);
+    padding: 5px;
+    font-size: 0.81em;
   }
 }
 
-@media screen and (max-width: 442px) {
+@media screen and (max-width: 449px) {
   .chat-container .options-container .options-main-content .content-wrapper .option-codes,
   .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
-  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .support-wrapper .option-codes {
     width: calc(100% - 10px);
     font-size: 1.3em;
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-reset {
     width: calc(100% - 20px);
     font-size: 1.2em;
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .pierogi-kind {
+    width: calc(80% - 20px);
   }
 }
 
 @media screen and (max-width: 375px) {
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-div {
     width: calc(50% - 10px);
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-reset {
     font-size: 1em;
+    width: calc(110% - 20px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .support-label,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .support-label,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .support-label,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .support-label {
+    width: calc(100% - 10px);
+    padding: 5px 0;
+    font-size: 0.8em !important;
+  }
+}
+
+@media screen and (max-width: 324px) {
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .pierogi-kind,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .pierogi-kind {
+    width: calc(100% - 20px);
+  }
+
+  .chat-container .options-container .options-main-content .content-wrapper .color-options .extended-pierogi-subsection,
+  .chat-container .options-container .options-main-content .codes-wrapper .color-options .extended-pierogi-subsection,
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .extended-pierogi-subsection,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .extended-pierogi-subsection {
     width: calc(110% - 20px);
   }
 }
@@ -1862,25 +2007,29 @@ body {
 
   .chat-container .options-container .options-main-content .content-wrapper,
   .chat-container .options-container .options-main-content .codes-wrapper,
-  .chat-container .options-container .options-main-content .graphics-wrapper {
+  .chat-container .options-container .options-main-content .graphics-wrapper,
+  .chat-container .options-container .options-main-content .support-wrapper {
     width: calc(100% - 10px);
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .option-codes,
   .chat-container .options-container .options-main-content .codes-wrapper .option-codes,
-  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes {
+  .chat-container .options-container .options-main-content .graphics-wrapper .option-codes,
+  .chat-container .options-container .options-main-content .support-wrapper .option-codes {
     font-size: 1.1em;
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-div,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-div,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-div,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-div {
     width: calc(50% - 10px);
   }
 
   .chat-container .options-container .options-main-content .content-wrapper .color-options .color-reset,
   .chat-container .options-container .options-main-content .codes-wrapper .color-options .color-reset,
-  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset {
+  .chat-container .options-container .options-main-content .graphics-wrapper .color-options .color-reset,
+  .chat-container .options-container .options-main-content .support-wrapper .color-options .color-reset {
     font-size: 1em;
     width: calc(110% - 20px);
   }

@@ -58,7 +58,7 @@
             .fall-back:hover{
                 background: rgba(255,255,255,.8);
             }
-            .content-wrapper,.codes-wrapper,.graphics-wrapper{
+            .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                 width: calc(95% - 20px);
                 padding: 10px;
                 margin-left: auto;
@@ -119,6 +119,47 @@
                     .color-reset:hover{
                         filter: brightness(70%);
                     }
+                    .support-label{
+                        width: calc(90% - 20px);
+                        padding: 10px 0px;
+                        display: block;
+                        margin: 2px auto;
+                        text-indent: 1em;
+                        font-size: 1.2em !important;
+                        text-align: left;
+                    }
+                    .pierogi-kind,.extended-pierogi-subsection{
+                        display: inline-block;
+                        width: calc(47% - 20px);
+                        padding: 10px;
+                        margin: 4px;
+                        font-size: 1em;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        text-align: center;
+                        background: rgba(255,255,255,.8);
+                    }
+                    .extended-pierogi-subsection{
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: calc(90% - 20px);
+                    }
+                    .advice{
+                        border: 2px solid darkmagenta;
+                        border-radius: 10px;
+                        width: calc(90% - 20px);
+                        padding: 10px;
+                        display: block;
+                        margin-left: auto;
+                        margin-right: auto;
+                        text-align: center;
+                        font-size: 1.2em;
+                        font-family: "Oswald",sans-serif;
+                        .advice-content{
+                            font-weight: 800;
+                        }
+                    }
                 }
             }
         }
@@ -128,7 +169,7 @@
     .chat-container{
         .options-container{
             .options-main-content{
-                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                     .option-codes{
                         width: calc(95% - 10px);
                         font-size: 1.7em;
@@ -137,6 +178,9 @@
                         width: calc(90% - 20px);
                         .color-div{
                             width: calc(22% - 10px);
+                        }
+                        .pierogi-kind,.extended-pierogi-subsection{
+                            font-size: 0.9em;
                         }
                     }
                 }
@@ -153,7 +197,7 @@
                     width: 40px;
                     height: 40px;
                 }
-                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                     .option-codes{
                         width: calc(100% - 10px);
                         font-size: 1.5em;
@@ -161,6 +205,11 @@
                     .color-options{
                         .color-reset{
                             width: calc(90% - 20px);
+                        }
+                        .support-label{
+                            width: calc(100% - 20px);
+                            text-indent: 0;
+                            font-size: 1.1em !important;
                         }
                     }
                 }
@@ -172,11 +221,16 @@
     .chat-container{
         .options-container{
             .options-main-content{
-                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                     .color-options{
                         width: calc(100% - 20px);
                         .color-div{
                             width: calc(26% - 10px);
+                        }
+                        .advice{
+                            width: calc(100% - 10px);
+                            padding: 5px;
+                            font-size: 0.81em;
                         }
                     }
                 }
@@ -184,11 +238,11 @@
         }
     }
 }
-@media screen and (max-width: 442px){
+@media screen and (max-width: 449px){
     .chat-container{
         .options-container{
             .options-main-content{
-                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                     .option-codes{
                         width: calc(100% - 10px);
                         font-size: 1.3em;
@@ -197,6 +251,9 @@
                         .color-reset{
                             width: calc(100% - 20px);
                             font-size: 1.2em;
+                        }
+                        .pierogi-kind{
+                            width: calc(80% - 20px);
                         }
                     }
                 }
@@ -208,13 +265,36 @@
     .chat-container{
         .options-container{
             .options-main-content{
-                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                     .color-options{
                         .color-div{
                             width: calc(50% - 10px);
                         }
                         .color-reset{
                             font-size: 1em;
+                            width: calc(110% - 20px);
+                        }
+                        .support-label{
+                            width: calc(100% - 10px);
+                            padding: 5px 0;
+                            font-size: 0.8em !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 324px){
+    .chat-container{
+        .options-container{
+            .options-main-content{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
+                    .color-options{
+                        .pierogi-kind{
+                            width: calc(100% - 20px);
+                        }
+                        .extended-pierogi-subsection{
                             width: calc(110% - 20px);
                         }
                     }
@@ -232,7 +312,7 @@
                     width: 30px;
                     height: 30px;
                 }
-                .content-wrapper,.codes-wrapper,.graphics-wrapper{
+                .content-wrapper,.codes-wrapper,.graphics-wrapper,.support-wrapper{
                     width: calc(100% - 10px);
                     .option-codes{
                         font-size: 1.1em;

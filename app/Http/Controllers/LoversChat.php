@@ -182,4 +182,20 @@ class LoversChat extends Controller
             return json_encode("database error");
         }
     }
+    function readSupportData(Request $data){
+        if(!$data->has("email")) return json_encode("missing necessary data");
+        if(!session()->has("signed_in")) return json_encode("user not signed in");
+        $email = $data->get("email");
+        try{
+            $primaryId = $this->getTheId($email);
+            $getData = DB::table("users_ids")->select("name as username","surname as usersurname", "age as currentUserAge","liveIn as hometown","profileDesc as userCurrentDesc", "pierogiClassic as userStandardPierogies","pierogiPersonal as userExtendedPierogies")->where("primaryId","=",$primaryId)->get();
+            $getData = json_decode(json_encode($getData),true);
+            if($getData[0]["userCurrentDesc"] == "") $getData[0]["userCurrentDesc"] = "Brak opisu";
+            $getData = json_encode($getData);
+            return $getData;
+        } catch (Illuminate\Database\QueryException $e){
+            report($e);
+            return json_encode("database error");
+        }
+    }
 }
