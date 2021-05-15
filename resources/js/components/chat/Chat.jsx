@@ -46,14 +46,15 @@ export default class ChatOptions extends React.Component{
         this.pieceOfAdviceRef = React.createRef();
 
         this.OpenTheOptions = this.OpenTheOptions.bind(this);
+        this.secondStageHelper = this.secondStageHelper.bind(this);
         this.runSecondStage = this.runSecondStage.bind(this);
         this.playCode = this.playCode.bind(this);
+        this.createThePostParams = this.createThePostParams.bind(this);
         this.sendSpecialMessage = this.sendSpecialMessage.bind(this);
         this.takeTheShot = this.takeTheShot.bind(this);
         this.resetCodes = this.resetCodes.bind(this);
         this.fallBack = this.fallBack.bind(this);
         this.openSubSection = this.openSubSection.bind(this);
-        this.changeBackground = this.changeBackground.bind(this);
         this.readTheGraphicData = this.readTheGraphicData.bind(this);
         this.resetGraphics = this.resetGraphics.bind(this);
         this.readTheSupportData = this.readTheSupportData.bind(this);
@@ -75,24 +76,22 @@ export default class ChatOptions extends React.Component{
             this.currentStageOfOptions = 1;  
         }
     }
+    secondStageHelper(mode){ // 0 - graphics, 1 - codes, 2 - support
+        this.optionsWrapperRef.current.classList.add("hidden");
+        mode === 0 ? this.graphicsContainerRef.current.classList.remove("hidden"): this.graphicsContainerRef.current.classList.add("hidden")
+        mode === 1 ? this.codesContainerRef.current.classList.remove("hidden") : this.codesContainerRef.current.classList.add("hidden")
+        mode === 2 ? this.supportContainerRef.current.classList.remove("hidden") : this.supportContainerRef.current.classList.add("hidden")
+        this.currentStageOfOptions = 2;
+    }
     runSecondStage(stageCase){
         if(stageCase === "codes"){
-            this.optionsWrapperRef.current.classList.add("hidden");
-            this.codesContainerRef.current.classList.remove("hidden");
-            this.supportContainerRef.current.classList.add("hidden");
-            this.currentStageOfOptions = 2;
+            this.secondStageHelper(1);
         }
         else if(stageCase === "graphics"){
-            this.optionsWrapperRef.current.classList.add("hidden");
-            this.graphicsContainerRef.current.classList.remove("hidden");
-            this.supportContainerRef.current.classList.add("hidden");
-            this.currentStageOfOptions = 2;
+            this.secondStageHelper(0);
         }
         else if(stageCase === "support"){
-            this.optionsWrapperRef.current.classList.add("hidden");
-            this.graphicsContainerRef.current.classList.add("hidden");
-            this.supportContainerRef.current.classList.remove("hidden");
-            this.currentStageOfOptions = 2;
+            this.secondStageHelper(2);
         }
     }
     async takeTheShot(route, params){
@@ -102,16 +101,19 @@ export default class ChatOptions extends React.Component{
             
         } );
     }
-    sendSpecialMessage(contentToGo){
-        const messageParams = {
+    createThePostParams(sendingObj){
+        sendingObj["_token"] = this.props.sendingtoken;
+        return {
             method: "POST",
             headers: {"Content-type":"application/json"},
-            body: JSON.stringify({
-                content: contentToGo,
-                emailToWriteWith: this.props.email,
-                 _token: this.props.sendingtoken
-            })
+            body: JSON.stringify(sendingObj)
         };
+    }
+    sendSpecialMessage(contentToGo){
+        const messageParams = this.createThePostParams({
+            content: contentToGo,
+            emailToWriteWith: this.props.email
+        });
         this.takeTheShot("/user/chat/sendTheMessage", messageParams);
     }
     resetCodes(){
@@ -174,14 +176,10 @@ export default class ChatOptions extends React.Component{
         });
     }
     async readTheSupportData(){
-        const getTheData = fetch("/user/chatSupport/getTheSupportData/",{
-            method: "POST",
-            headers: {"Content-type":"application/json"},
-            body: JSON.stringify({
-                _token: this.props.sendingtoken,
-                email: this.props.email
-            })
-        }).then(back => back.json())
+        const params = this.createThePostParams({
+            email: this.props.email
+        });
+        const getTheData = fetch("/user/chatSupport/getTheSupportData/",params).then(back => back.json())
         .then(data => {
             this.setState({
                 username: data[0].username,
@@ -194,26 +192,8 @@ export default class ChatOptions extends React.Component{
             },() => {});
         })
     }
-    changeBackground(route,mode,course){
-        const params = {
-            method: "POST",
-            headers: {"Content-type":"application/json"},
-            body: JSON.stringify({
-                newbackground: mode,
-                whatToUpdate: course,
-                _token: this.props.sendingtoken
-            })
-        };
-        this.takeTheShot(route,params).then(() => {this.readTheGraphicData();});
-    }
     resetGraphics(route){
-        const params = {
-            method: "POST",
-            headers: {"Content-type":"application/json"},
-            body: JSON.stringify({
-                _token: this.props.sendingtoken
-            })
-        };
+        const params = this.createThePostParams({});
         this.takeTheShot(route,params).then(() => {this.readTheGraphicData();});
     }
     clickCallback(){
@@ -225,7 +205,7 @@ export default class ChatOptions extends React.Component{
     }
     render(){
         return(
-            <section class="chat-container">
+            <section className="chat-container">
             <div id="chat-options" className="chat-options">
             <div className="options-container">
                 <div className="hamburger" onClick = {() => {this.OpenTheOptions()}}>
@@ -247,15 +227,15 @@ export default class ChatOptions extends React.Component{
                         <div className="option-codes" onClick={()=>{this.resetGraphics(this.resetRoute)}}>Ustawienia fabryczne</div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.backgroundColorRef)}}>Tło konwersacji</div>
                         <div className="color-options hidden" ref = {this.backgroundColorRef}>
-                            <GraphicsSubSection changeRoute = {this.convBackgroundRoute} clickCallback = {this.clickCallback}/>
+                            <GraphicsSubSection changeRoute = {this.convBackgroundRoute} whatToChange = "back" clickCallback = {this.clickCallback} createTheData = {this.createThePostParams}/>
                         </div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.messBackgroundRef)}}>Tło wiadomości</div>
                         <div className="color-options hidden" ref = {this.messBackgroundRef}>
-                            <GraphicsSubSection changeRoute = {this.messBackgroundRoute} clickCallback = {this.clickCallback}/>
+                            <GraphicsSubSection changeRoute = {this.messBackgroundRoute} whatToChange = "mess" clickCallback = {this.clickCallback} createTheData = {this.createThePostParams}/>
                         </div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.messColorRef)}}>Kolor czcionki</div>
                         <div className="color-options hidden" ref = {this.messColorRef}>
-                            <GraphicsSubSection changeRoute = {this.messColorRoute} clickCallback = {this.clickCallback}/>
+                            <GraphicsSubSection changeRoute = {this.messColorRoute} whatToChange = "font" clickCallback = {this.clickCallback} createTheData = {this.createThePostParams}/>
                         </div>
                     </div>
                     <div className="support-wrapper hidden" ref = {this.supportContainerRef}>
@@ -264,7 +244,7 @@ export default class ChatOptions extends React.Component{
                             <div className="support-label">Nazwa: {this.state.username+" "+this.state.usersurname}</div>
                             <div className="support-label">Wiek: {this.state.age}</div>
                             <div className="support-label">Miasto: {this.state.town}</div>
-                            <div className="support-label">Opis: {/*this.state.description*/}Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</div>
+                            <div className="support-label">Opis: {this.state.description}</div>
                         </div>
                         <div className="option-codes" onClick = {() => {this.openSubSection(this.pierogiInfoRef)}}>Ulubione pierogi</div>
                         <div className="color-options hidden" ref = {this.pierogiInfoRef}>

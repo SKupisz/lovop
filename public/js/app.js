@@ -66860,7 +66860,6 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.mainRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
-    _this.status = 0;
     _this.openTheMenu = _this.openTheMenu.bind(_assertThisInitialized(_this));
     return _this;
   }
@@ -66868,100 +66867,68 @@ var Navbar = /*#__PURE__*/function (_React$Component) {
   _createClass(Navbar, [{
     key: "openTheMenu",
     value: function openTheMenu() {
-      if (this.status == 0) {
-        this.mainRef.current.classList.add("main-navbar-extended");
-        this.status = 1;
-      } else {
-        this.mainRef.current.classList.remove("main-navbar-extended");
-        this.status = 0;
-      }
+      this.mainRef.current.classList.contains("main-navbar-extended") ? this.mainRef.current.classList.remove("main-navbar-extended") : this.mainRef.current.classList.add("main-navbar-extended");
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      if (this.props.signed_in) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "main-navbar",
-          ref: this.mainRef
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-          "class": "main-nav"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "dropdown-open-mode",
-          onClick: function onClick() {
-            _this2.openTheMenu();
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/",
-          "class": "main-logo main-nav-elems"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          "class": "logo-text"
-        }, "Lovop")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/user"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "main-nav-elems"
-        }, "G\u0142\xF3wna")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/user/matches"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "main-nav-elems"
-        }, "Lubicie si\u0119")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/about",
-          className: "main-nav-elems"
-        }, "O nas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "settings-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/user/edit",
-          className: "main-nav-elems edit-elem"
-        }, "Ustawienia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/logout",
-          className: "main-nav-elems logout-elem"
-        }, "Wyloguj"))));
-      } else {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "main-navbar",
-          ref: this.mainRef
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-          "class": "main-nav"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "dropdown-open-mode",
-          onClick: function onClick() {
-            _this2.openTheMenu();
-          }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/",
-          "class": "main-logo main-nav-elems"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          "class": "logo-text"
-        }, "Lovop")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "main-nav-elems"
-        }, "G\u0142\xF3wna")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          href: "/about",
-          className: "main-nav-elems"
-        }, "O nas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "settings-container"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "dropdown dropdown-elem"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          "class": "btn btn-secondary dropdown-toggle",
-          type: "button",
-          id: "dropdownMenuButton",
-          "data-toggle": "dropdown",
-          "aria-haspopup": "true",
-          "aria-expanded": "false"
-        }, "Do\u0142\u0105cz do nas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          "class": "dropdown-menu dropdown-menu-right",
-          "aria-labelledby": "dropdownMenuButton"
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          "class": "dropdown-item",
-          href: "/signin"
-        }, "Zaloguj si\u0119"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-          "class": "dropdown-item",
-          href: "/register"
-        }, "Zarejestruj si\u0119"))))));
-      }
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-navbar",
+        ref: this.mainRef
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+        className: "main-nav"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-open-mode",
+        onClick: function onClick() {
+          _this2.openTheMenu();
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/",
+        className: "main-logo main-nav-elems"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "logo-text"
+      }, "Lovop")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/user"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-nav-elems"
+      }, "G\u0142\xF3wna")), this.props.signed_in ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/user/matches"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-nav-elems"
+      }, "Lubicie si\u0119")) : "", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/about",
+        className: "main-nav-elems"
+      }, "O nas"), this.props.signed_in ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/user/edit",
+        className: "main-nav-elems edit-elem"
+      }, "Ustawienia"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "/logout",
+        className: "main-nav-elems logout-elem"
+      }, "Wyloguj")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-container"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown dropdown-elem"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-secondary dropdown-toggle",
+        type: "button",
+        id: "dropdownMenuButton",
+        "data-toggle": "dropdown",
+        "aria-haspopup": "true",
+        "aria-expanded": "false"
+      }, "Do\u0142\u0105cz do nas"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dropdown-menu dropdown-menu-right",
+        "aria-labelledby": "dropdownMenuButton"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item",
+        href: "/signin"
+      }, "Zaloguj si\u0119"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "dropdown-item",
+        href: "/register"
+      }, "Zarejestruj si\u0119"))))));
     }
   }]);
 
@@ -67052,6 +67019,8 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
     _this.convertIntoPierogiList = _this.convertIntoPierogiList.bind(_assertThisInitialized(_this));
     _this.prepareForeignPierogiStaff = _this.prepareForeignPierogiStaff.bind(_assertThisInitialized(_this));
     _this.throwThisOut = _this.throwThisOut.bind(_assertThisInitialized(_this));
+    _this.prepareLoveParams = _this.prepareLoveParams.bind(_assertThisInitialized(_this));
+    _this.afterCupidJob = _this.afterCupidJob.bind(_assertThisInitialized(_this));
     _this.cupidDoingHisJob = _this.cupidDoingHisJob.bind(_assertThisInitialized(_this));
     _this.makeTheMove = _this.makeTheMove.bind(_assertThisInitialized(_this));
     _this.infoSectionRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
@@ -67189,48 +67158,45 @@ var UserPicker = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
-    key: "throwThisOut",
-    value: function throwThisOut() {
-      var insertNewFailedLoveParams = {
+    key: "prepareLoveParams",
+    value: function prepareLoveParams(sendingObj) {
+      sendingObj["_token"] = this.props.sendingtoken;
+      return {
         method: "POST",
         headers: {
           "Content-type": "application/json"
         },
-        body: JSON.stringify({
-          email: this.state.loversData[this.state.loversIterator]["email"],
-          status: -1,
-          _token: this.props.sendingtoken
-        })
+        body: JSON.stringify(sendingObj)
       };
-      this.cupidDoingHisJob(insertNewFailedLoveParams);
-
-      if (this.state.loversIterator == this.state.loversData.length - 1) {} else {
+    }
+  }, {
+    key: "afterCupidJob",
+    value: function afterCupidJob() {
+      if (this.state.loversIterator < this.state.loversData.length - 1) {
         this.setState({
           loversIterator: this.state.loversIterator + 1
         }, function () {});
       }
     }
   }, {
+    key: "throwThisOut",
+    value: function throwThisOut() {
+      var insertNewFailedLoveParams = this.prepareLoveParams({
+        email: this.state.loversData[this.state.loversIterator]["email"],
+        status: -1
+      });
+      this.cupidDoingHisJob(insertNewFailedLoveParams);
+      this.afterCupidJob();
+    }
+  }, {
     key: "makeTheMove",
     value: function makeTheMove() {
-      var insertNewFailedLoveParams = {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          email: this.state.loversData[this.state.loversIterator]["email"],
-          status: 1,
-          _token: this.props.sendingtoken
-        })
-      };
+      var insertNewFailedLoveParams = this.prepareLoveParams({
+        email: this.state.loversData[this.state.loversIterator]["email"],
+        status: 1
+      });
       this.cupidDoingHisJob(insertNewFailedLoveParams);
-
-      if (this.state.loversIterator == this.state.loversData.length - 1) {} else {
-        this.setState({
-          loversIterator: this.state.loversIterator + 1
-        }, function () {});
-      }
+      this.afterCupidJob();
     }
   }, {
     key: "backToSearching",
@@ -67458,14 +67424,15 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
     _this.pierogiInfoRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
     _this.pieceOfAdviceRef = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
     _this.OpenTheOptions = _this.OpenTheOptions.bind(_assertThisInitialized(_this));
+    _this.secondStageHelper = _this.secondStageHelper.bind(_assertThisInitialized(_this));
     _this.runSecondStage = _this.runSecondStage.bind(_assertThisInitialized(_this));
     _this.playCode = _this.playCode.bind(_assertThisInitialized(_this));
+    _this.createThePostParams = _this.createThePostParams.bind(_assertThisInitialized(_this));
     _this.sendSpecialMessage = _this.sendSpecialMessage.bind(_assertThisInitialized(_this));
     _this.takeTheShot = _this.takeTheShot.bind(_assertThisInitialized(_this));
     _this.resetCodes = _this.resetCodes.bind(_assertThisInitialized(_this));
     _this.fallBack = _this.fallBack.bind(_assertThisInitialized(_this));
     _this.openSubSection = _this.openSubSection.bind(_assertThisInitialized(_this));
-    _this.changeBackground = _this.changeBackground.bind(_assertThisInitialized(_this));
     _this.readTheGraphicData = _this.readTheGraphicData.bind(_assertThisInitialized(_this));
     _this.resetGraphics = _this.resetGraphics.bind(_assertThisInitialized(_this));
     _this.readTheSupportData = _this.readTheSupportData.bind(_assertThisInitialized(_this));
@@ -67491,23 +67458,24 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       }
     }
   }, {
+    key: "secondStageHelper",
+    value: function secondStageHelper(mode) {
+      // 0 - graphics, 1 - codes, 2 - support
+      this.optionsWrapperRef.current.classList.add("hidden");
+      mode === 0 ? this.graphicsContainerRef.current.classList.remove("hidden") : this.graphicsContainerRef.current.classList.add("hidden");
+      mode === 1 ? this.codesContainerRef.current.classList.remove("hidden") : this.codesContainerRef.current.classList.add("hidden");
+      mode === 2 ? this.supportContainerRef.current.classList.remove("hidden") : this.supportContainerRef.current.classList.add("hidden");
+      this.currentStageOfOptions = 2;
+    }
+  }, {
     key: "runSecondStage",
     value: function runSecondStage(stageCase) {
       if (stageCase === "codes") {
-        this.optionsWrapperRef.current.classList.add("hidden");
-        this.codesContainerRef.current.classList.remove("hidden");
-        this.supportContainerRef.current.classList.add("hidden");
-        this.currentStageOfOptions = 2;
+        this.secondStageHelper(1);
       } else if (stageCase === "graphics") {
-        this.optionsWrapperRef.current.classList.add("hidden");
-        this.graphicsContainerRef.current.classList.remove("hidden");
-        this.supportContainerRef.current.classList.add("hidden");
-        this.currentStageOfOptions = 2;
+        this.secondStageHelper(0);
       } else if (stageCase === "support") {
-        this.optionsWrapperRef.current.classList.add("hidden");
-        this.graphicsContainerRef.current.classList.add("hidden");
-        this.supportContainerRef.current.classList.remove("hidden");
-        this.currentStageOfOptions = 2;
+        this.secondStageHelper(2);
       }
     }
   }, {
@@ -67542,19 +67510,24 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       return takeTheShot;
     }()
   }, {
-    key: "sendSpecialMessage",
-    value: function sendSpecialMessage(contentToGo) {
-      var messageParams = {
+    key: "createThePostParams",
+    value: function createThePostParams(sendingObj) {
+      sendingObj["_token"] = this.props.sendingtoken;
+      return {
         method: "POST",
         headers: {
           "Content-type": "application/json"
         },
-        body: JSON.stringify({
-          content: contentToGo,
-          emailToWriteWith: this.props.email,
-          _token: this.props.sendingtoken
-        })
+        body: JSON.stringify(sendingObj)
       };
+    }
+  }, {
+    key: "sendSpecialMessage",
+    value: function sendSpecialMessage(contentToGo) {
+      var messageParams = this.createThePostParams({
+        content: contentToGo,
+        emailToWriteWith: this.props.email
+      });
       this.takeTheShot("/user/chat/sendTheMessage", messageParams);
     }
   }, {
@@ -67660,21 +67633,15 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       var _readTheSupportData = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         var _this3 = this;
 
-        var getTheData;
+        var params, getTheData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                getTheData = fetch("/user/chatSupport/getTheSupportData/", {
-                  method: "POST",
-                  headers: {
-                    "Content-type": "application/json"
-                  },
-                  body: JSON.stringify({
-                    _token: this.props.sendingtoken,
-                    email: this.props.email
-                  })
-                }).then(function (back) {
+                params = this.createThePostParams({
+                  email: this.props.email
+                });
+                getTheData = fetch("/user/chatSupport/getTheSupportData/", params).then(function (back) {
                   return back.json();
                 }).then(function (data) {
                   _this3.setState({
@@ -67688,7 +67655,7 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
                   }, function () {});
                 });
 
-              case 1:
+              case 2:
               case "end":
                 return _context3.stop();
             }
@@ -67703,41 +67670,13 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       return readTheSupportData;
     }()
   }, {
-    key: "changeBackground",
-    value: function changeBackground(route, mode, course) {
-      var _this4 = this;
-
-      var params = {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          newbackground: mode,
-          whatToUpdate: course,
-          _token: this.props.sendingtoken
-        })
-      };
-      this.takeTheShot(route, params).then(function () {
-        _this4.readTheGraphicData();
-      });
-    }
-  }, {
     key: "resetGraphics",
     value: function resetGraphics(route) {
-      var _this5 = this;
+      var _this4 = this;
 
-      var params = {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          _token: this.props.sendingtoken
-        })
-      };
+      var params = this.createThePostParams({});
       this.takeTheShot(route, params).then(function () {
-        _this5.readTheGraphicData();
+        _this4.readTheGraphicData();
       });
     }
   }, {
@@ -67754,10 +67693,10 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this6 = this;
+      var _this5 = this;
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("section", {
-        "class": "chat-container"
+        className: "chat-container"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         id: "chat-options",
         className: "chat-options"
@@ -67766,7 +67705,7 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "hamburger",
         onClick: function onClick() {
-          _this6.OpenTheOptions();
+          _this5.OpenTheOptions();
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "hamburger-hor"
@@ -67780,7 +67719,7 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "fall-back",
         onClick: function onClick() {
-          _this6.fallBack();
+          _this5.fallBack();
         }
       }, "\u2B05"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "content-wrapper",
@@ -67789,19 +67728,19 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
         className: "option-codes",
         ref: this.codesRef,
         onClick: function onClick() {
-          _this6.runSecondStage("codes");
+          _this5.runSecondStage("codes");
         }
       }, "Kody"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         ref: this.codesRef,
         onClick: function onClick() {
-          _this6.runSecondStage("graphics");
+          _this5.runSecondStage("graphics");
         }
       }, "Grafika"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         ref: this.codesRef,
         onClick: function onClick() {
-          _this6.runSecondStage("support");
+          _this5.runSecondStage("support");
         }
       }, "Wsparcie rozmowy")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "codes-wrapper hidden",
@@ -67809,7 +67748,7 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.playCode(1);
+          _this5.playCode(1);
         }
       }, "Heart Game")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "graphics-wrapper hidden",
@@ -67817,48 +67756,54 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.resetGraphics(_this6.resetRoute);
+          _this5.resetGraphics(_this5.resetRoute);
         }
       }, "Ustawienia fabryczne"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.openSubSection(_this6.backgroundColorRef);
+          _this5.openSubSection(_this5.backgroundColorRef);
         }
       }, "T\u0142o konwersacji"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-options hidden",
         ref: this.backgroundColorRef
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_GraphicsSubSection_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
         changeRoute: this.convBackgroundRoute,
-        clickCallback: this.clickCallback
+        whatToChange: "back",
+        clickCallback: this.clickCallback,
+        createTheData: this.createThePostParams
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.openSubSection(_this6.messBackgroundRef);
+          _this5.openSubSection(_this5.messBackgroundRef);
         }
       }, "T\u0142o wiadomo\u015Bci"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-options hidden",
         ref: this.messBackgroundRef
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_GraphicsSubSection_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
         changeRoute: this.messBackgroundRoute,
-        clickCallback: this.clickCallback
+        whatToChange: "mess",
+        clickCallback: this.clickCallback,
+        createTheData: this.createThePostParams
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.openSubSection(_this6.messColorRef);
+          _this5.openSubSection(_this5.messColorRef);
         }
       }, "Kolor czcionki"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-options hidden",
         ref: this.messColorRef
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_GraphicsSubSection_jsx__WEBPACK_IMPORTED_MODULE_5__["default"], {
         changeRoute: this.messColorRoute,
-        clickCallback: this.clickCallback
+        whatToChange: "font",
+        clickCallback: this.clickCallback,
+        createTheData: this.createThePostParams
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "support-wrapper hidden",
         ref: this.supportContainerRef
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.openSubSection(_this6.generalInfoRef);
+          _this5.openSubSection(_this5.generalInfoRef);
         }
       }, "Informacje og\xF3lne"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-options hidden",
@@ -67871,10 +67816,10 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
         className: "support-label"
       }, "Miasto: ", this.state.town), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "support-label"
-      }, "Opis: ", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      }, "Opis: ", this.state.description)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.openSubSection(_this6.pierogiInfoRef);
+          _this5.openSubSection(_this5.pierogiInfoRef);
         }
       }, "Ulubione pierogi"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-options hidden",
@@ -67885,7 +67830,7 @@ var ChatOptions = /*#__PURE__*/function (_React$Component) {
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "option-codes",
         onClick: function onClick() {
-          _this6.openSubSection(_this6.pieceOfAdviceRef);
+          _this5.openSubSection(_this5.pieceOfAdviceRef);
         }
       }, "Porady"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-options hidden",
@@ -68164,6 +68109,7 @@ var GrahpicsSubSection = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.changeBackground = _this.changeBackground.bind(_assertThisInitialized(_this));
     _this.takeTheShot = _this.takeTheShot.bind(_assertThisInitialized(_this));
+    _this.colorsList = ["red", "green", "blue", "white", "gray", "purple", "cyan", "magenta"];
     return _this;
   }
 
@@ -68203,17 +68149,10 @@ var GrahpicsSubSection = /*#__PURE__*/function (_React$Component) {
     value: function changeBackground(route, mode, course) {
       var _this2 = this;
 
-      var params = {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-          newbackground: mode,
-          whatToUpdate: course,
-          _token: this.props.sendingtoken
-        })
-      };
+      var params = this.props.createTheData({
+        newbackground: mode,
+        whatToUpdate: course
+      });
       this.takeTheShot(route, params).then(function () {
         _this2.props.clickCallback();
       });
@@ -68225,50 +68164,17 @@ var GrahpicsSubSection = /*#__PURE__*/function (_React$Component) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: ""
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div red",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "red", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div green",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "green", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div blue",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "blue", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div white",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "white", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div gray",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "gray", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div purple",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "purple", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div cyan",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "cyan", "back");
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-        className: "color-div magenta",
-        onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "magenta", "back");
-        }
+      }, this.colorsList.map(function (item) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+          className: "color-div " + item,
+          onClick: function onClick() {
+            _this3.changeBackground(_this3.props.changeRoute, item, _this3.props.whatToChange);
+          }
+        });
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
         className: "color-reset",
         onClick: function onClick() {
-          _this3.changeBackground(_this3.props.changeRoute, "default", "back");
+          _this3.changeBackground(_this3.props.changeRoute, "default", _this3.props.whatToChange);
         }
       }, "Ustawienia fabryczne"));
     }
@@ -68433,9 +68339,7 @@ var ReadingTheData = /*#__PURE__*/function (_React$Component) {
                 _context.next = 2;
                 return fetch("/user/chat/sendTheMessage", params).then(function (back) {
                   return back.json();
-                }).then(function (data) {
-                  console.log(JSON.stringify(data));
-                });
+                }).then(function (data) {});
 
               case 2:
                 databack = _context.sent;
@@ -68996,7 +68900,7 @@ var DataFormCheckboxes = /*#__PURE__*/function (_React$Component) {
           _this2.pickedUpUsersSex("woman");
         },
         id: "woman-checkbox",
-        "class": "data-formCheckInput"
+        className: "data-formCheckInput"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         "for": "",
         "class": "sex-label"
@@ -69008,7 +68912,7 @@ var DataFormCheckboxes = /*#__PURE__*/function (_React$Component) {
           _this2.pickedUpUsersSex("man");
         },
         id: "",
-        "class": "data-formCheckInput"
+        className: "data-formCheckInput"
       }));
     }
   }]);
@@ -69317,6 +69221,7 @@ var DataFormPierogi = /*#__PURE__*/function (_React$Component) {
     _this.pierogiRef4 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.pierogiRef5 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.pierogiRef6 = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.pierogiRefs = [[_this.pierogiRef1, "Z mięsem"], [_this.pierogiRef2, "Ruskie"], [_this.pierogiRef3, "Z kapustą i grzybami"], [_this.pierogiRef4, "Z serem"], [_this.pierogiRef5, "Z jagodami"], [_this.pierogiRef6, "Ze szpinakiem"]];
     _this.extendedPierogi = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.tableOfOrders = [0, 0, 0, 0, 0, 0];
     _this.state = {
@@ -69365,7 +69270,7 @@ var DataFormPierogi = /*#__PURE__*/function (_React$Component) {
               _this2.tableOfOrders[i] = Number(codeOperand.charAt(5 - i));
 
               if (_this2.tableOfOrders[i] == 1) {
-                if (i == 5) _this2.pierogiRef6.current.classList.add("chosen");else if (i == 4) _this2.pierogiRef5.current.classList.add("chosen");else if (i == 3) _this2.pierogiRef4.current.classList.add("chosen");else if (i == 2) _this2.pierogiRef3.current.classList.add("chosen");else if (i == 1) _this2.pierogiRef2.current.classList.add("chosen");else if (i == 0) _this2.pierogiRef1.current.classList.add("chosen");
+                _this2.pierogiRefs[i][0].current.classList.add("chosen");
               }
             }
           });
@@ -69385,49 +69290,16 @@ var DataFormPierogi = /*#__PURE__*/function (_React$Component) {
         className: "pierogi-wrapper"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "pierogi-buttons"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "pierogi-classic-btn",
-        ref: this.pierogiRef1,
-        onClick: function onClick() {
-          _this3.addToQueue(0, _this3.pierogiRef1);
-        }
-      }, "Z mi\u0119sem"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "pierogi-classic-btn",
-        ref: this.pierogiRef2,
-        onClick: function onClick() {
-          _this3.addToQueue(1, _this3.pierogiRef2);
-        }
-      }, "Ruskie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "pierogi-classic-btn",
-        ref: this.pierogiRef3,
-        onClick: function onClick() {
-          _this3.addToQueue(2, _this3.pierogiRef3);
-        }
-      }, "Z kapust\u0105 i grzybami"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "pierogi-classic-btn",
-        ref: this.pierogiRef4,
-        onClick: function onClick() {
-          _this3.addToQueue(3, _this3.pierogiRef4);
-        }
-      }, "Z serem"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "pierogi-classic-btn",
-        ref: this.pierogiRef5,
-        onClick: function onClick() {
-          _this3.addToQueue(4, _this3.pierogiRef5);
-        }
-      }, "Z jagodami"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        type: "button",
-        className: "pierogi-classic-btn",
-        ref: this.pierogiRef6,
-        onClick: function onClick() {
-          _this3.addToQueue(5, _this3.pierogiRef6);
-        }
-      }, "Ze szpinakiem")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, this.pierogiRefs.map(function (item, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          type: "button",
+          className: "pierogi-classic-btn",
+          ref: item[0],
+          onClick: function onClick() {
+            _this3.addToQueue(index, item[0]);
+          }
+        }, item[1]);
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         name: "pierogiExtended",
         id: "",

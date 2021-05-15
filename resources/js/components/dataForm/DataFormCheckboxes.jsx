@@ -49,8 +49,8 @@ export default class DataFormCheckboxes extends React.Component{
     render(){
         return(
             <div className="content">
-                <label for="" class="sex-label">K</label><input type="checkbox" name="woman" ref = {this.woman} onClick = {() => {this.pickedUpUsersSex("woman")}} id="woman-checkbox" class="data-formCheckInput"/>
-                <label for="" class="sex-label">M</label><input type="checkbox" name="man" ref = {this.man} onClick = {() => {this.pickedUpUsersSex("man")}} id="" class="data-formCheckInput"/>
+                <label for="" class="sex-label">K</label><input type="checkbox" name="woman" ref = {this.woman} onClick = {() => {this.pickedUpUsersSex("woman")}} id="woman-checkbox" className="data-formCheckInput"/>
+                <label for="" class="sex-label">M</label><input type="checkbox" name="man" ref = {this.man} onClick = {() => {this.pickedUpUsersSex("man")}} id="" className="data-formCheckInput"/>
             </div>
         );
     }

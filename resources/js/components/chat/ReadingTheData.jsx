@@ -77,7 +77,6 @@ export default class ReadingTheData extends React.Component{
         .then(back => back.json())
         .then(
             (data) => {
-                console.log(JSON.stringify(data));
         });
     }
     takeTheLoveShot(){

@@ -5,87 +5,57 @@ export default class Navbar extends React.Component{
     constructor(props){
         super(props);
         this.mainRef = React.createRef();
-        this.status = 0;
         this.openTheMenu = this.openTheMenu.bind(this);
     }
     openTheMenu(){
-        if(this.status == 0){
-            this.mainRef.current.classList.add("main-navbar-extended");
-            this.status = 1;
-        }
-        else{
-            this.mainRef.current.classList.remove("main-navbar-extended");
-            this.status = 0;
-        }
+        this.mainRef.current.classList.contains("main-navbar-extended") ? this.mainRef.current.classList.remove("main-navbar-extended") : this.mainRef.current.classList.add("main-navbar-extended");
     }
     render(){
-        if(this.props.signed_in){
-            return(
-                <div class="main-navbar" ref = {this.mainRef}>
-                    <nav class="main-nav">
-                        <div className="dropdown-open-mode" onClick = {() => {this.openTheMenu()}}>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <a href="/" class="main-logo main-nav-elems">
-                            <span class="logo-text">Lovop</span>
-                        </a>
-                        <a href = "/user">
-                            <div class="main-nav-elems">Główna</div>
-                        </a>
-                        <a href = "/user/matches">
-                            <div class="main-nav-elems">Lubicie się</div>
-                        </a>
-                        <a href = "/about" className = "main-nav-elems">
-                            O nas
-                        </a>
-                        
-                        <div className="settings-container">
+        return(
+            <div className="main-navbar" ref = {this.mainRef}>
+                <nav className="main-nav">
+                    <div className="dropdown-open-mode" onClick = {() => {this.openTheMenu()}}>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <a href="/" className="main-logo main-nav-elems">
+                        <span className="logo-text">Lovop</span>
+                    </a>
+                    <a href = "/user">
+                        <div className="main-nav-elems">Główna</div>
+                    </a>
+                    {this.props.signed_in ?                         
+                    <a href = "/user/matches">
+                        <div className="main-nav-elems">Lubicie się</div>
+                    </a> : ""}
+
+                    <a href = "/about" className = "main-nav-elems">
+                        O nas
+                    </a>
+                    {this.props.signed_in ?                         
+                    <div className="settings-container">
                         <a href = "/user/edit" className="main-nav-elems edit-elem">
                             Ustawienia
                         </a>
                         <a href = "/logout" className = "main-nav-elems logout-elem">
                             Wyloguj
                         </a>
-                        </div>
-                    </nav>
-                </div>
-                );
-        }
-        else{
-            return(
-                <div class="main-navbar" ref = {this.mainRef}>
-                    <nav class="main-nav">
-                        <div className="dropdown-open-mode" onClick = {() => {this.openTheMenu()}}>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
-                        <a href="/" class="main-logo main-nav-elems">
-                            <span class="logo-text">Lovop</span>
-                        </a>
-                        <a href = "/">
-                            <div class="main-nav-elems">Główna</div>
-                        </a>
-                        <a href = "/about" className = "main-nav-elems">
-                            O nas
-                        </a>
-                        <div className="settings-container">
-                            <div class="dropdown dropdown-elem">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dołącz do nas
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/signin">Zaloguj się</a>
-                                    <a class="dropdown-item" href="/register">Zarejestruj się</a>
-                                </div>
+                    </div> :
+                    <div className="settings-container">
+                        <div className="dropdown dropdown-elem">
+                            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dołącz do nas
+                            </button>
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a className="dropdown-item" href="/signin">Zaloguj się</a>
+                                <a className="dropdown-item" href="/register">Zarejestruj się</a>
                             </div>
                         </div>
-                    </nav>
-                </div>
-                );
-        }
+                    </div>}
+                </nav>
+            </div>
+            );
     }
 }
 

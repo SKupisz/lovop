@@ -10,6 +10,14 @@ export default class DataFormPierogi extends React.Component{
         this.pierogiRef4 = React.createRef();
         this.pierogiRef5 = React.createRef();
         this.pierogiRef6 = React.createRef();
+        this.pierogiRefs = [
+            [this.pierogiRef1, "Z mięsem"], 
+            [this.pierogiRef2, "Ruskie"],
+            [this.pierogiRef3, "Z kapustą i grzybami"], 
+            [this.pierogiRef4, "Z serem"],
+            [this.pierogiRef5, "Z jagodami"], 
+            [this.pierogiRef6, "Ze szpinakiem"]
+        ];
         this.extendedPierogi = React.createRef();
 
         this.tableOfOrders = [0,0,0,0,0,0];
@@ -46,18 +54,7 @@ export default class DataFormPierogi extends React.Component{
                     for(let i = 5; i >= (5-codeOperand.length); i--){
                         this.tableOfOrders[i] = Number(codeOperand.charAt(5-i));
                         if(this.tableOfOrders[i] == 1){
-                            if(i == 5) 
-                            this.pierogiRef6.current.classList.add("chosen");
-                        else if(i == 4) 
-                            this.pierogiRef5.current.classList.add("chosen");
-                        else if(i == 3) 
-                            this.pierogiRef4.current.classList.add("chosen");
-                        else if(i == 2)
-                            this.pierogiRef3.current.classList.add("chosen");
-                        else if(i == 1)
-                            this.pierogiRef2.current.classList.add("chosen");
-                        else if(i == 0)
-                            this.pierogiRef1.current.classList.add("chosen");
+                            this.pierogiRefs[i][0].current.classList.add("chosen");
                         }
                         
                     }
@@ -72,12 +69,7 @@ export default class DataFormPierogi extends React.Component{
         return(
             <div className="pierogi-wrapper">
                 <div className="pierogi-buttons">
-                    <button type="button" className="pierogi-classic-btn" ref={this.pierogiRef1} onClick={()=>{this.addToQueue(0,this.pierogiRef1)}}>Z mięsem</button>
-                    <button type="button" className="pierogi-classic-btn" ref={this.pierogiRef2} onClick={()=>{this.addToQueue(1,this.pierogiRef2)}}>Ruskie</button>
-                    <button type="button" className="pierogi-classic-btn" ref={this.pierogiRef3} onClick={()=>{this.addToQueue(2,this.pierogiRef3)}}>Z kapustą i grzybami</button>
-                    <button type="button" className="pierogi-classic-btn" ref={this.pierogiRef4} onClick={()=>{this.addToQueue(3,this.pierogiRef4)}}>Z serem</button>
-                    <button type="button" className="pierogi-classic-btn" ref={this.pierogiRef5} onClick={()=>{this.addToQueue(4,this.pierogiRef5)}}>Z jagodami</button>
-                    <button type="button" className="pierogi-classic-btn" ref={this.pierogiRef6} onClick={()=>{this.addToQueue(5,this.pierogiRef6)}}>Ze szpinakiem</button>
+                    {this.pierogiRefs.map((item,index) => <button type="button" className="pierogi-classic-btn" ref={item[0]} onClick={()=>{this.addToQueue(index,item[0])}}>{item[1]}</button>)}
                 </div>
                 <input type="text" name="pierogiExtended" id="" ref = {this.extendedPierogi} placeholder="Inne (opcjonalnie)" className="data-formInput"/>
 

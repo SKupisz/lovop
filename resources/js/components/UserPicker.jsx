@@ -23,6 +23,8 @@ export default class UserPicker extends React.Component{
         this.convertIntoPierogiList = this.convertIntoPierogiList.bind(this);
         this.prepareForeignPierogiStaff = this.prepareForeignPierogiStaff.bind(this);
         this.throwThisOut = this.throwThisOut.bind(this);
+        this.prepareLoveParams = this.prepareLoveParams.bind(this);
+        this.afterCupidJob = this.afterCupidJob.bind(this);
         this.cupidDoingHisJob = this.cupidDoingHisJob.bind(this);
         this.makeTheMove = this.makeTheMove.bind(this);
 
@@ -121,47 +123,36 @@ export default class UserPicker extends React.Component{
             return null;
         }
     }
-    throwThisOut(){
-        const insertNewFailedLoveParams = {
+    prepareLoveParams(sendingObj){
+        sendingObj["_token"] = this.props.sendingtoken;
+        return {
             method: "POST",
             headers: {"Content-type":"application/json"},
-            body: JSON.stringify({
-                email: this.state.loversData[this.state.loversIterator]["email"],
-                status: -1,
-                 _token: this.props.sendingtoken
-            })
-        };
-        this.cupidDoingHisJob(insertNewFailedLoveParams);
-        if(this.state.loversIterator == this.state.loversData.length-1){
-
+            body: JSON.stringify(sendingObj)
         }
-        else{
-            this.setState({
-                loversIterator: this.state.loversIterator+1
-            },() => {
-            });
-        }
-        
     }
-    makeTheMove(){
-        const insertNewFailedLoveParams = {
-            method: "POST",
-            headers: {"Content-type":"application/json"},
-            body: JSON.stringify({
-                email: this.state.loversData[this.state.loversIterator]["email"],
-                status: 1,
-                 _token: this.props.sendingtoken
-            })
-        };
-        this.cupidDoingHisJob(insertNewFailedLoveParams);
-        if(this.state.loversIterator == this.state.loversData.length-1){
-
-        }
-        else{
+    afterCupidJob(){
+        if(this.state.loversIterator < this.state.loversData.length-1){
             this.setState({
                 loversIterator: this.state.loversIterator+1
             },() => {});
         }
+    }
+    throwThisOut(){
+        const insertNewFailedLoveParams = this.prepareLoveParams({
+            email: this.state.loversData[this.state.loversIterator]["email"],
+            status: -1
+        });
+        this.cupidDoingHisJob(insertNewFailedLoveParams);
+        this.afterCupidJob();
+    }
+    makeTheMove(){
+        const insertNewFailedLoveParams = this.prepareLoveParams({
+            email: this.state.loversData[this.state.loversIterator]["email"],
+            status: 1
+        });
+        this.cupidDoingHisJob(insertNewFailedLoveParams);
+        this.afterCupidJob();
     }
     backToSearching(){
         this.matchedSectionRef.current.style.display = "none";
